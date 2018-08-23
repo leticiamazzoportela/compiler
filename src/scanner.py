@@ -1,11 +1,13 @@
 import ply.lex as lex
 import sys
 
-tokens = ('INTEIRO', 'FLUTUANTE', 'ID', 'SOMA', 'SUBTRACAO', 'MULTIPLICACAO', 'DIVISAO', 'IGUALDADE', 'VIRGULA',
-            'ATRIBUICAO', 'MENOR', 'MAIOR', 'MENOR_IGUAL', 'MAIOR_IGUAL', 'ABRE_PAR', 'FECHA_PAR', 'DOIS_PONTOS',
-            'ABRE_COL', 'FECHA_COL', 'E_LOGICO', 'OU_LOGICO', 'NEGACAO', 'COMENTARIO', 'NUM')
+palavras_reservadas = {'se' : 'SE', 'então' : 'ENTAO', 'senão' : 'SENAO', 'fim' : 'FIM', 'repita' : 'REPITA',
+                'flutuante' : 'FLUTUANTE', 'inteiro' : 'INTEIRO', 'retorna' : 'RETORNA', 'ate' : 'ATE',
+                'leia' : 'LEIA', 'escreva' : 'ESCREVA'}
 
-palavras_reservadas = ('SE', 'ENTÃO', 'SENÃO', 'FIM', 'REPITA', 'FLUTUANTE', 'INTEIRO', 'RETORNA', 'ATÉ', 'LEIA', 'ESCREVA')
+tokens = ['NUM_INTEIRO', 'NUM_FLUTUANTE', 'ID', 'SOMA', 'SUBTRACAO', 'MULTIPLICACAO', 'DIVISAO', 'IGUALDADE', 'VIRGULA',
+            'ATRIBUICAO', 'MENOR', 'MAIOR', 'MENOR_IGUAL', 'MAIOR_IGUAL', 'ABRE_PAR', 'FECHA_PAR', 'DOIS_PONTOS',
+            'ABRE_COL', 'FECHA_COL', 'E_LOGICO', 'OU_LOGICO', 'NEGACAO', 'COMENTARIO']+list(palavras_reservadas.values())
 
 t_SOMA = r'\+'
 t_SUBTRACAO = r'\-'
@@ -22,24 +24,48 @@ t_FECHA_COL = r'\]'
 t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
-#falta regra para: atribuicao, menor e maior igual, e e ou logicos, comentario, num (no geral), palavras_reservadas
+t_ignore = ' \t\n\r'
+t_ignore_COMENTARIO = r'\{(.|\n)*\}'
 
-t_ignore = ' \t\n'
-
-def t_FLUTUANTE(t):
-    r'[-+]?\d+\.\d+([eE][-+]?\d+)?'
+def t_NUM_FLUTUANTE(t):
+    r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
     t.value = float(t.value)
     return t
 
 #Para os outros casos não é tão simples, por isso é necessário criar uma expressão regular
-def t_INTEIRO(t):
+def t_NUM_INTEIRO(t):
     r'\d+' #nesse caso, aceita todos os caracteres que o tamanho é maior que um
     t.value = int(t.value) #então, precisamos converter para inteiro
     return t
 
 def t_ID(t):
-    r'[a-zA-Z][a-zA-Z0-9]*'
-    t.type = 'ID'
+    r'[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ_-][a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_-]*'
+    t.type = palavras_reservadas.get(t.value, 'ID')
+    return t
+
+def t_ATRIBUICAO(t):
+    r'\:\='
+    t.type = 'ATRIBUICAO'
+    return t
+
+def t_MENOR_IGUAL(t):
+    r'\<\='
+    t.type = 'MENOR_IGUAL'
+    return t
+
+def t_MAIOR_IGUAL(t):
+    r'\>\='
+    t.type = 'MAIOR_IGUAL'
+    return t
+
+def t_E_LOGICO(t):
+    r'\&\&'
+    t.type = 'E_LOGICO'
+    return t
+
+def t_OU_LOGICO(t):
+    r'\|\|'
+    t.type = 'OU_LOGICO'
     return t
 
 def t_error(t):
