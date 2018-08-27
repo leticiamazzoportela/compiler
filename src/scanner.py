@@ -74,17 +74,19 @@ def t_error(t):
 
 lexer = lex.lex()
 
-fileName = sys.argv[1]
-
-file = open(fileName, 'r')
-line = file.readline()
-while line != "":
-    lexer.input(line)
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print("<", tok.type, ",", tok.value, ">")
-
+if len(sys.argv) == 1:
+    print("Comando incorreto! \nSintaxe: python scanner.py nome_arquivo_teste.tpp")
+else:
+    fileName = sys.argv[1]
+    file = open(fileName, 'r')
     line = file.readline()
-file.close()
+    while line:
+        lexer.input(line)
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break
+            print("<", tok.type, ",", tok.value, ">")
+
+        line = file.readline()
+    file.close()
