@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import ply.lex as lex
 import sys
 
@@ -25,7 +26,7 @@ t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
-t_ignore_COMENTARIO = r'\{(.|\n)*\}'
+t_ignore_COMENTARIO = r'({(.|\n)*?})|({(.|\n)*?)$'
 
 def t_NUM_FLUTUANTE(t):
     r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
@@ -39,7 +40,7 @@ def t_NUM_INTEIRO(t):
     return t
 
 def t_ID(t):
-    r'[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ_-][a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_-]*'
+    r'[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ_][a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9_]*'
     t.type = palavras_reservadas.get(t.value, 'ID')
     return t
 
@@ -68,25 +69,30 @@ def t_OU_LOGICO(t):
     t.type = 'OU_LOGICO'
     return t
 
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
 def t_error(t):
     print("Caractere '%s' Inválido!" % t.value[0])
     t.lexer.skip(1)
 
-lexer = lex.lex()
+lexer = lex.lex() #executa o lexer
 
 if len(sys.argv) == 1:
-    print("Comando incorreto! \nSintaxe: python scanner.py nome_arquivo_teste.tpp")
+    print("Comando incorreto! \nSintaxe: python scanner.py nome_arquivo_teste.tpp") #Verifica se o arquivo foi executado corretamente
 else:
-    fileName = sys.argv[1]
-    file = open(fileName, 'r')
-    line = file.readline()
-    while line:
-        lexer.input(line)
+    fileName = sys.argv[1] #Recebe nome do arquivo a ser escaneado
+    file = open(fileName, 'r') #abre o arquivo
+    line = file.readline() #lê a primeira linha do arquivo
+    while line: #enquanto o arquivo tiver linha para ser lida
+        lexer.input(line) #alimenta o lexer com uma linha
         while True:
-            tok = lexer.token()
-            if not tok:
+            tok = lexer.token() #pega o próximo token
+            if not tok: #se não tiver mais nenhum, para
                 break
-            print("<", tok.type, ",", tok.value, ">")
+            print("<", tok.type, ",", tok.value, ">") #do contrário, vai mostrando os tokens
 
-        line = file.readline()
+        line = file.readline() #passa para a próxima linha
+
     file.close()
