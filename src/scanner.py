@@ -26,7 +26,8 @@ t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
-t_ignore_COMENTARIO = r'({(.|\n)*?})|({(.|\n)*?)$'
+# t_ignore_COMENTARIO = r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
+t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$'
 
 def t_NUM_FLUTUANTE(t):
     r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
@@ -85,14 +86,16 @@ else:
     fileName = sys.argv[1] #Recebe nome do arquivo a ser escaneado
     file = open(fileName, 'r') #abre o arquivo
     line = file.readline() #lê a primeira linha do arquivo
+    cont = 1
     while line: #enquanto o arquivo tiver linha para ser lida
         lexer.input(line) #alimenta o lexer com uma linha
         while True:
             tok = lexer.token() #pega o próximo token
             if not tok: #se não tiver mais nenhum, para
                 break
-            print("<", tok.type, ",", tok.value, ">") #do contrário, vai mostrando os tokens
+            print("Linha",cont,": <", tok.type, ",", tok.value, ">") #do contrário, vai mostrando os tokens
 
         line = file.readline() #passa para a próxima linha
+        cont = cont + 1
 
     file.close()
