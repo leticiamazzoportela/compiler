@@ -4,10 +4,6 @@ import sys
 
 from scanner import tokens #importa tokens definidos no scanner
 
-#The values of p[i] are mapped to grammar symbols
-#expression : expression PLUS term
-# p[0]      : p[1]       p[1]  p[2]
-
 #Definição da gramática
 
 def p_programa(p):
@@ -17,7 +13,7 @@ def p_programa(p):
 def p_lista_declaracoes(p):
     '''lista_declaracoes : lista_declaracoes declaracao
                          | declaracao'''
-    if len(p) == 3: #nao sei se isso funciona
+    if len(p) == 3:
         p[0] = (p[1], p[2])
     elif len(p) == 2:
         p[0] = p[2]
@@ -252,19 +248,30 @@ def p_vazio(p):
     pass
 
 parser = yacc.yacc()
-while True:
-    try:
-        s = input('')
-    except EOFError:
-        break
-    if not s: continue
-    result = parser.parse(s)
-    print(result)
+
+if len(sys.argv) == 1:
+    print("Comando incorreto! \nSintaxe: python parser.py nome_arquivo_saida_scanner.tpp")
+else:
+    fileName = sys.argv[1] #Recebe nome do arquivo a ser escaneado
+    file = open(fileName, 'r') #abre o arquivo
+    line = file.readline() #lê a primeira linha do arquivo
+
+    # while line:
+    while True:
+        try:
+            s = input('')
+        except EOFError:
+            break
+        if not s: continue
+        result = parser.parse(s)
+        print(result)
+
+    file.close()
 
 #O que falta:
-#1) Fazer leitura do mesmo arquivo lido no scanner;
+#1) Consertar a leitura do arquivo, getToken não está funcionando do jeito que deveria
+#2) Ler os slides
 #2) Mostrar a árvore
-#3) Verificar se os p[0] = (p[1], p[2]) funcionam
 #4) Verificar se o p[0] = None funciona
 #5) Arrumar comentario no scanner
 #6) Relatório

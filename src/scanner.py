@@ -83,19 +83,25 @@ lexer = lex.lex() #executa o lexer
 if len(sys.argv) == 1:
     print("Comando incorreto! \nSintaxe: python scanner.py nome_arquivo_teste.tpp") #Verifica se o arquivo foi executado corretamente
 else:
-    fileName = sys.argv[1] #Recebe nome do arquivo a ser escaneado
-    file = open(fileName, 'r') #abre o arquivo
-    line = file.readline() #lê a primeira linha do arquivo
-    cont = 1
-    while line: #enquanto o arquivo tiver linha para ser lida
-        lexer.input(line) #alimenta o lexer com uma linha
+    fileName = sys.argv[1]
+    aux = fileName.split(".")
+    fileOut = aux[0] + '_out.txt'
+
+    file = open(fileName, 'r') 
+    fileWriteOut = open(fileOut, 'w')
+
+    line = file.readline()
+    # cont = 1
+    while line: 
+        lexer.input(line) 
         while True:
-            tok = lexer.token() #pega o próximo token
-            if not tok: #se não tiver mais nenhum, para
+            tok = lexer.token() 
+            if not tok: 
                 break
-            print("Linha",cont,": <", tok.type, ",", tok.value, ">") #do contrário, vai mostrando os tokens
+            fileWriteOut.write("< " +tok.type+ " , " +str(tok.value)+ " >\n") 
 
-        line = file.readline() #passa para a próxima linha
-        cont = cont + 1
+        line = file.readline()
+        # cont = cont + 1
 
+    fileWriteOut.close()
     file.close()
