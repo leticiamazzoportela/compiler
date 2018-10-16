@@ -106,5 +106,3 @@ def run_scanner(file):
         print("Arquivo Escaneado com Sucesso!")
         fileWriteOut.close()
         f.close()
-
-        return fileOut
