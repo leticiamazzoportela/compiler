@@ -27,7 +27,7 @@ t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
 # t_ignore_COMENTARIO = r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
-t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$'
+t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$' #testar tabela asc
 
 def t_NUM_FLUTUANTE(t):
     r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
@@ -80,28 +80,31 @@ def t_error(t):
 
 lexer = lex.lex() #executa o lexer
 
-if len(sys.argv) == 1:
-    print("Comando incorreto! \nSintaxe: python scanner.py nome_arquivo_teste.tpp") #Verifica se o arquivo foi executado corretamente
-else:
-    fileName = sys.argv[1]
-    aux = fileName.split(".")
-    fileOut = aux[0] + '_out.txt'
+def run_scanner(file):
+    if file == None:
+        print("Arquivo inválido!")
+    else:
+        fileName = file
+        aux = fileName.split(".")
+        fileOut = aux[0] + '_out.txt'
 
-    file = open(fileName, 'r') 
-    fileWriteOut = open(fileOut, 'w')
+        f = open(fileName, 'r') 
+        fileWriteOut = open(fileOut, 'w')
 
-    line = file.readline()
-    # cont = 1
-    while line: 
-        lexer.input(line) 
-        while True:
-            tok = lexer.token() 
-            if not tok: 
-                break
-            fileWriteOut.write("< " +tok.type+ " , " +str(tok.value)+ " >\n") 
+        line = f.readline()
+        # cont = 1
+        while line: 
+            lexer.input(line) 
+            while True:
+                tok = lexer.token() 
+                if not tok: 
+                    break
+                fileWriteOut.write("<" +tok.type+ " , " +str(tok.value)+ ">\n") 
 
-        line = file.readline()
-        # cont = cont + 1
+            line = f.readline()
+            # cont = cont + 1
+        print("Arquivo Escaneado com Sucesso!")
+        fileWriteOut.close()
+        f.close()
 
-    fileWriteOut.close()
-    file.close()
+        return fileOut
