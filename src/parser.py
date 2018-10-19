@@ -389,7 +389,7 @@ def p_numero(p):
     Node(p[1], parent=p[0])
 
 def p_chamada_funcao(p):
-    '''chamada_funcao : ID ABRE_COL lista_argumentos FECHA_COL'''
+    '''chamada_funcao : ID ABRE_PAR lista_argumentos FECHA_PAR'''
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'chamada_funcao')

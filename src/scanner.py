@@ -6,7 +6,7 @@ palavras_reservadas = {'se' : 'SE', 'então' : 'ENTAO', 'senão' : 'SENAO', 'fim
                 'flutuante' : 'FLUTUANTE', 'inteiro' : 'INTEIRO', 'retorna' : 'RETORNA', 'ate' : 'ATE',
                 'leia' : 'LEIA', 'escreva' : 'ESCREVA'}
 
-tokens = ['NUM_INTEIRO', 'NUM_FLUTUANTE', 'ID', 'SOMA', 'SUBTRACAO', 'MULTIPLICACAO', 'DIVISAO', 'IGUALDADE', 'VIRGULA',
+tokens = ['NUM_INTEIRO', 'NUM_FLUTUANTE', 'ID', 'SOMA', 'SUBTRACAO', 'MULTIPLICACAO', 'DIVISAO', 'IGUALDADE', 'DIFERENTE', 'VIRGULA',
             'ATRIBUICAO', 'MENOR', 'MAIOR', 'MENOR_IGUAL', 'MAIOR_IGUAL', 'ABRE_PAR', 'FECHA_PAR', 'DOIS_PONTOS',
             'ABRE_COL', 'FECHA_COL', 'E_LOGICO', 'OU_LOGICO', 'NEGACAO', 'COMENTARIO']+list(palavras_reservadas.values())
 
@@ -27,17 +27,17 @@ t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
 # t_ignore_COMENTARIO = r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
-t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$' #testar tabela asc
+# t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$' #testar tabela asc
 
 def t_NUM_FLUTUANTE(t):
     r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
     t.value = float(t.value)
     return t
 
-#Para os outros casos não é tão simples, por isso é necessário criar uma expressão regular
+
 def t_NUM_INTEIRO(t):
-    r'\d+' #nesse caso, aceita todos os caracteres que o tamanho é maior que um
-    t.value = int(t.value) #então, precisamos converter para inteiro
+    r'\d+'
+    t.value = int(t.value)
     return t
 
 def t_ID(t):
@@ -60,6 +60,11 @@ def t_MAIOR_IGUAL(t):
     t.type = 'MAIOR_IGUAL'
     return t
 
+def t_DIFERENTE(t):
+    r'\<\>'
+    t.type = 'DIFERENTE'
+    return t
+
 def t_E_LOGICO(t):
     r'\&\&'
     t.type = 'E_LOGICO'
@@ -69,6 +74,10 @@ def t_OU_LOGICO(t):
     r'\|\|'
     t.type = 'OU_LOGICO'
     return t
+
+def t_COMENTARIO(t):
+    r'\{[^}]*[^{]*\}$'
+    pass
 
 def t_newline(t):
     r'\n+'
