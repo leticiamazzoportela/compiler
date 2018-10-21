@@ -26,11 +26,9 @@ def p_lista_declaracoes(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'lista_declaracoes')
+    p[1].parent = p[0]
     if len(p) == 3:
-        p[1].parent = p[0]
         p[2].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_declaracao(p):
     '''declaracao : declaracao_variaveis
@@ -63,12 +61,10 @@ def p_lista_variaveis(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'lista_variaveis')
+    p[1].parent = p[0]
     if len(p) == 4:
         Node(p[2], parent=p[0])
-        p[1].parent = p[0]
         p[3].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_var(p):
     '''var : ID
@@ -76,10 +72,8 @@ def p_var(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'var')
-    if len(p) == 2:
-        Node(p[1], parent=p[0])
-    elif len(p) == 3:
-        Node(p[1], parent=p[0])
+    Node(p[1], parent=p[0])
+    if len(p) == 3:
         p[2].parent = p[0]
 
 def p_indice(p):
@@ -112,11 +106,9 @@ def p_declaracao_funcao(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'declaracao_funcao')
+    p[1].parent = p[0]
     if len(p) == 3:
-        p[1].parent = p[0]
         p[2].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_cabecalho(p):
     '''cabecalho : ID ABRE_PAR lista_parametros FECHA_PAR corpo FIM'''
@@ -137,22 +129,27 @@ def p_lista_parametros(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'lista_parametros')
+    p[1].parent = p[0]
     if len(p) == 4:
-        p[1].parent = p[0]
         Node(p[2], parent=p[0])
         p[3].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_parametro(p):
     '''parametro : tipo DOIS_PONTOS ID
-                 | parametro ABRE_COL FECHA_COL'''
+                 | tipo DOIS_PONTOS ID ABRE_COL FECHA_COL
+                 | vazio'''
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'parametro')
     p[1].parent = p[0]
-    Node(p[2], parent=p[0])
-    Node(p[3], parent=p[0])
+    if len(p) == 4:
+        Node(p[2], parent=p[0])
+        Node(p[3], parent=p[0])
+    if len(p) == 6:
+        Node(p[2], parent=p[0])
+        Node(p[3], parent=p[0])
+        Node(p[4], parent=p[0])
+        Node(p[5], parent=p[0])
 
 def p_corpo(p):
     '''corpo : corpo acao
@@ -160,11 +157,9 @@ def p_corpo(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'corpo')
+    p[1].parent = p[0]
     if len(p) == 3:
-        p[1].parent = p[0]
         p[2].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_acao(p):
     '''acao : expressao
@@ -186,18 +181,13 @@ def p_se(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'se')
-    if len(p) == 6:
-        Node(p[1], parent=p[0])
-        p[2].parent = p[0]
-        Node(p[3], parent=p[0])
-        p[4].parent = p[0]
-        Node(p[5], parent=p[0])
-    elif len(p) == 8:
-        Node(p[1], parent=p[0])
-        p[2].parent = p[0]
-        Node(p[3], parent=p[0])
-        p[4].parent = p[0]
-        Node(p[5], parent=p[0])
+    Node(p[1], parent=p[0])
+    p[2].parent = p[0]
+    Node(p[3], parent=p[0])
+    p[4].parent = p[0]
+    Node(p[5], parent=p[0])
+
+    if len(p) == 8:   
         p[6].parent = p[0]
         Node(p[7], parent=p[0])
 
@@ -264,10 +254,8 @@ def p_expressao_logica(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'expressao_logica')
-    if len(p) == 2:
-        p[1].parent = p[0]
-    elif len(p) == 4:
-        p[1].parent = p[0]
+    p[1].parent = p[0]
+    if len(p) == 4:
         p[2].parent = p[0]
         p[3].parent = p[0]
 
@@ -277,10 +265,8 @@ def p_expressao_simples(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'expressao_simples')
-    if len(p) == 2:
-        p[1].parent = p[0]
-    elif len(p) == 4:
-        p[1].parent = p[0]
+    p[1].parent = p[0]
+    if len(p) == 4:
         p[2].parent = p[0]
         p[3].parent = p[0]
 
@@ -290,10 +276,8 @@ def p_expressao_aditiva(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'expressao_aditiva')
-    if len(p) == 2:
-        p[1].parent = p[0]
-    elif len(p) == 4:
-        p[1].parent = p[0]
+    p[1].parent = p[0]
+    if len(p) == 4:
         p[2].parent = p[0]
         p[3].parent = p[0]
 
@@ -303,10 +287,8 @@ def p_expressao_multiplicativa(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'expressao_multiplicativa')
-    if len(p) == 2:
-        p[1].parent = p[0]
-    elif len(p) == 4:
-        p[1].parent = p[0]
+    p[1].parent = p[0]
+    if len(p) == 4:
         p[2].parent = p[0]
         p[3].parent = p[0]
 
@@ -317,16 +299,15 @@ def p_expressao_unaria(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'expressao_unaria')
-    if len(p) == 2:
-        p[1].parent = p[0]
-    elif len(p) == 3:
-        p[1].parent = p[0]
+    p[1].parent = p[0]
+    if len(p) == 3:
         p[2].parent = p[0]
 
 def p_operador_relacional(p):
     '''operador_relacional : MENOR
                            | MAIOR
                            | IGUALDADE
+                           | DIFERENTE
                            | MENOR_IGUAL
                            | MAIOR_IGUAL'''
     global id_node
@@ -405,20 +386,18 @@ def p_lista_argumentos(p):
     global id_node
     id_node = id_node + 1
     p[0] = Node(str(id_node)+'.'+'lista_argumentos')
+    p[1].parent = p[0]
     if len(p) == 4:
-        p[1].parent = p[0]
         Node(p[2], parent=p[0])
         p[3].parent = p[0]
-    elif len(p) == 2:
-        p[1].parent = p[0]
 
 def p_vazio(p):
-    'vazio :'
+    'vazio : '
     p[0] = Node(p[0])
 
 def p_error(p):
     if p:
-        print("Erro sintático na linha '%d': '%s'" % (p.lineno, p.value))
+        print("Erro sintático em '%s'" % p.value)
         exit(1)
     else:
         yacc.restart()
@@ -436,8 +415,6 @@ def run_parser(file):
         # parser = yacc.yacc()
         result = parser.parse(arq)
         
-        for pre, fill, node in RenderTree(result):
-            print("%s%s" % (pre, node.name))
-        DotExporter(result).to_picture("ast.png")
+        DotExporter(result).to_dotfile("ast.dot")
         
         f.close()

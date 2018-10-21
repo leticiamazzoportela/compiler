@@ -3,12 +3,12 @@ import ply.lex as lex
 import sys
 
 palavras_reservadas = {'se' : 'SE', 'então' : 'ENTAO', 'senão' : 'SENAO', 'fim' : 'FIM', 'repita' : 'REPITA',
-                'flutuante' : 'FLUTUANTE', 'inteiro' : 'INTEIRO', 'retorna' : 'RETORNA', 'ate' : 'ATE',
+                'flutuante' : 'FLUTUANTE', 'inteiro' : 'INTEIRO', 'retorna' : 'RETORNA', 'até' : 'ATE',
                 'leia' : 'LEIA', 'escreva' : 'ESCREVA'}
 
 tokens = ['NUM_INTEIRO', 'NUM_FLUTUANTE', 'ID', 'SOMA', 'SUBTRACAO', 'MULTIPLICACAO', 'DIVISAO', 'IGUALDADE', 'DIFERENTE', 'VIRGULA',
             'ATRIBUICAO', 'MENOR', 'MAIOR', 'MENOR_IGUAL', 'MAIOR_IGUAL', 'ABRE_PAR', 'FECHA_PAR', 'DOIS_PONTOS',
-            'ABRE_COL', 'FECHA_COL', 'E_LOGICO', 'OU_LOGICO', 'NEGACAO', 'COMENTARIO']+list(palavras_reservadas.values())
+            'ABRE_COL', 'FECHA_COL', 'E_LOGICO', 'OU_LOGICO', 'NEGACAO']+list(palavras_reservadas.values())
 
 t_SOMA = r'\+'
 t_SUBTRACAO = r'\-'
@@ -27,7 +27,12 @@ t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
 # t_ignore_COMENTARIO = r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
-# t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$' #testar tabela asc
+# t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$'
+# {.*} tentar
+
+def t_COMENTARIO(t):
+    r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
+    pass
 
 def t_NUM_FLUTUANTE(t):
     r'[-+]?\d+\.\d*([eE][-+]?\d+)?'
@@ -74,10 +79,6 @@ def t_OU_LOGICO(t):
     r'\|\|'
     t.type = 'OU_LOGICO'
     return t
-
-def t_COMENTARIO(t):
-    r'\{[^}]*[^{]*\}$'
-    pass
 
 def t_newline(t):
     r'\n+'
