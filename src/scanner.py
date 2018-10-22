@@ -26,10 +26,9 @@ t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
 t_ignore = ' \t\n\r'
-# t_ignore_COMENTARIO = r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
-# t_ignore_COMENTARIO = r'\{[^}]*[^{]*\}$'
-# {.*} tentar
 
+#Lista de funções que definem expressões regulares:
+#************************************************
 def t_COMENTARIO(t):
     r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
     pass
@@ -83,13 +82,18 @@ def t_OU_LOGICO(t):
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+#************************************************
+#Fim das expressões
 
+#Função que exibe erros
 def t_error(t):
     print("Caractere '%s' Inválido!" % t.value[0])
     t.lexer.skip(1)
 
 lexer = lex.lex() #executa o lexer
 
+#Função que chama o lexer e escaneia um arquivo passado por parâmetro.
+#A classificação dos tokens é armazenada em um arquivo
 def run_scanner(file):
     if file == None:
         print("Arquivo inválido!")
@@ -102,7 +106,7 @@ def run_scanner(file):
         fileWriteOut = open(fileOut, 'w')
 
         line = f.readline()
-        # cont = 1
+        
         while line: 
             lexer.input(line) 
             while True:
@@ -112,7 +116,7 @@ def run_scanner(file):
                 fileWriteOut.write("<" +tok.type+ " , " +str(tok.value)+ ">\n") 
 
             line = f.readline()
-            # cont = cont + 1
+            
         print("Arquivo Escaneado com Sucesso!")
         fileWriteOut.close()
         f.close()
