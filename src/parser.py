@@ -4,6 +4,7 @@ from anytree import Node, RenderTree
 from anytree.exporter import DotExporter
 
 from scanner import tokens
+from scanner import find_column
 
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
@@ -22,6 +23,7 @@ def p_programa(p):
     p[0] = Node(str(id_node)+'.'+'programa')
     p[1].parent = p[0]
 
+    # node.lineno
 def p_lista_declaracoes(p):
     '''lista_declaracoes : lista_declaracoes declaracao
                          | declaracao'''
@@ -53,7 +55,7 @@ def p_declaracao_variaveis(p):
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
 def p_inicializacao_variaveis(p):
@@ -75,7 +77,7 @@ def p_lista_variaveis(p):
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0])
+        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_var(p):
@@ -87,7 +89,7 @@ def p_var(p):
     p[0] = Node(str(id_node)+'.'+'var')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     if len(p) == 3:
         p[2].parent = p[0]
@@ -103,18 +105,18 @@ def p_indice(p):
     if len(p) == 5:
         p[1].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0])
+        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
 
         p[3].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[4], parent=p[0])
+        Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
     elif len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[1], parent=p[0])
+        Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
         p[2].parent = p[0]
 
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[3], parent=p[0])
+        Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
 
 def p_tipo(p):
     '''tipo : INTEIRO
@@ -125,7 +127,7 @@ def p_tipo(p):
     p[0] = Node(str(id_node)+'.'+'tipo')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_declaracao_funcao(p):
     '''declaracao_funcao : tipo cabecalho
@@ -147,18 +149,18 @@ def p_cabecalho(p):
     p[0] = Node(str(id_node)+'.'+'cabecalho')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0])
+    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
     p[5].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[6], parent=p[0])
+    Node(str(id_node)+'.'+p[6], parent=p[0], lineno=p.lineno(6))
 
 def p_lista_parametros(p):
     '''lista_parametros : lista_parametros VIRGULA parametro
@@ -172,7 +174,7 @@ def p_lista_parametros(p):
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0])
+        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_parametro(p):
@@ -185,10 +187,10 @@ def p_parametro(p):
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0])
+    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
 
 def p_corpo(p):
     '''corpo : corpo acao
@@ -226,20 +228,20 @@ def p_se(p):
     p[0] = Node(str(id_node)+'.'+'se')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
     p[2].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0])
+    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
     p[4].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[5], parent=p[0])
+    Node(str(id_node)+'.'+p[5], parent=p[0], lineno=p.lineno(5))
 
     if len(p) == 8:   
         p[6].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[7], parent=p[0])
+        Node(str(id_node)+'.'+p[7], parent=p[0], lineno=p.lineno(7))
 
 def p_repita(p):
     '''repita : REPITA corpo ATE expressao'''
@@ -249,11 +251,11 @@ def p_repita(p):
     p[0] = Node(str(id_node)+'.'+'repita')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
     p[2].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0])
+    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
     p[4].parent = p[0]
 
 def p_atribuicao(p):
@@ -265,7 +267,7 @@ def p_atribuicao(p):
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
 def p_leia(p):
@@ -276,14 +278,14 @@ def p_leia(p):
     p[0] = Node(str(id_node)+'.'+'leia')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0])
+    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_escreva(p):
     '''escreva : ESCREVA ABRE_PAR expressao FECHA_PAR'''
@@ -293,14 +295,14 @@ def p_escreva(p):
     p[0] = Node(str(id_node)+'.'+'escreva')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0])
+    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_retorna(p):
     '''retorna : RETORNA ABRE_PAR expressao FECHA_PAR'''
@@ -310,14 +312,14 @@ def p_retorna(p):
     p[0] = Node(str(id_node)+'.'+'retorna')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0])
+    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_expressao(p):
     '''expressao : expressao_logica
@@ -406,7 +408,7 @@ def p_operador_relacional(p):
     p[0] = Node(str(id_node)+'.'+'operador_relacional')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_soma(p):
     '''operador_soma : SOMA
@@ -417,7 +419,7 @@ def p_operador_soma(p):
     p[0] = Node(str(id_node)+'.'+'operador_soma')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_negacao(p):
     '''operador_negacao : NEGACAO'''
@@ -427,7 +429,7 @@ def p_operador_negacao(p):
     p[0] = Node(str(id_node)+'.'+'operador_negacao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_logico(p):
     '''operador_logico : E_LOGICO
@@ -438,7 +440,7 @@ def p_operador_logico(p):
     p[0] = Node(str(id_node)+'.'+'operador_logico')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_multiplicacao(p):
     '''operador_multiplicacao : MULTIPLICACAO
@@ -449,7 +451,7 @@ def p_operador_multiplicacao(p):
     p[0] = Node(str(id_node)+'.'+'operador_multiplicacao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_fator(p):
     '''fator : ABRE_PAR expressao FECHA_PAR
@@ -463,11 +465,11 @@ def p_fator(p):
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[1], parent=p[0])
+        Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
         p[2].parent = p[0]
 
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[3], parent=p[0])
+        Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
     elif len(p) == 2:
         p[1].parent = p[0]
 
@@ -480,7 +482,7 @@ def p_numero(p):
     p[0] = Node(str(id_node)+'.'+'numero')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+str(p[1]), parent=p[0])
+    Node(str(id_node)+'.'+str(p[1]), parent=p[0], lineno=p.lineno(1))
 
 def p_chamada_funcao(p):
     '''chamada_funcao : ID ABRE_PAR lista_argumentos FECHA_PAR'''
@@ -490,14 +492,14 @@ def p_chamada_funcao(p):
     p[0] = Node(str(id_node)+'.'+'chamada_funcao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0])
+    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0])
+    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0])
+    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_lista_argumentos(p):
     '''lista_argumentos : lista_argumentos VIRGULA expressao
@@ -511,7 +513,7 @@ def p_lista_argumentos(p):
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0])
+        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_vazio(p):
@@ -523,10 +525,12 @@ def p_vazio(p):
 #************************************************
 # Fim das regras
 
+
 #Função que exibe erros
 def p_error(p):
     if p:
-        print("Erro sintático em '%s'" % p.value)
+        # print("Erro sintático na linha %d - Posição %d: '%s'" % (p.lineno, p.lexpos, p.value))
+        print("Erro sintático na linha %d: '%s' após sentença estranha" % (p.lineno-20, p.value))
         exit(1)
     else:
         yacc.restart()

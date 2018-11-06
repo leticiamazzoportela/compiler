@@ -25,12 +25,13 @@ t_FECHA_COL = r'\]'
 t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
-t_ignore = ' \t\n\r'
+t_ignore = ' \t\r'
 
 #Lista de funções que definem expressões regulares:
 #************************************************
 def t_COMENTARIO(t):
     r'(\{(.|\n)*?\})|(\{(.|\n)*?)$'
+    # r'{.*}'
     pass
 
 def t_NUM_FLUTUANTE(t):
@@ -82,6 +83,10 @@ def t_OU_LOGICO(t):
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
 #************************************************
 #Fim das expressões
 
@@ -99,24 +104,17 @@ def run_scanner(file):
         print("Arquivo inválido!")
     else:
         fileName = file
-        aux = fileName.split(".")
-        fileOut = aux[0] + '_out.txt'
-
-        f = open(fileName, 'r') 
-        fileWriteOut = open(fileOut, 'w')
-
+        f = open(fileName, 'r')
         line = f.readline()
-        
-        while line: 
-            lexer.input(line) 
+        while line:
+            lexer.input(line)
             while True:
-                tok = lexer.token() 
-                if not tok: 
+                tok = lexer.token()
+                if not tok:
                     break
-                fileWriteOut.write("<" +tok.type+ " , " +str(tok.value)+ ">\n") 
+                tok.lexpos = find_column(line, tok)
+                print("Linha "+str(tok.lineno)+" - Pos " +str(tok.lexpos)+ ": <" +tok.type+ " , " +str(tok.value)+ ">\n")
 
             line = f.readline()
-            
-        print("Arquivo Escaneado com Sucesso!")
-        fileWriteOut.close()
+
         f.close()
