@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import ply.yacc as yacc
-from anytree import Node, RenderTree
+from anytree import Node, RenderTree, AsciiStyle
 from anytree.exporter import DotExporter
 
 from scanner import tokens
 from scanner import find_column
+from semantic import walk_tree
 
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
@@ -546,9 +547,11 @@ def run_parser(file):
         print("Arquivo inválido!")
     else:
         f = open(file, 'r')
+
         arq = f.read()
         result = parser.parse(arq)
+        walk_tree(result)
         
         DotExporter(result).to_picture("ast.png")
-        
+
         f.close()
