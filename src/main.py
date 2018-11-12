@@ -12,7 +12,6 @@ else:
 
     print("____________* Executando Analisador Sintático *____________\n")
     parser.run_parser(sys.argv[1])
-    print("____________* Analisador Sintático Finalizado *____________\n")
 
     # print("____________* Executando Analisador Semântico *____________\n")
     # semantic.walk_tree()

@@ -550,7 +550,11 @@ def run_parser(file):
 
         arq = f.read()
         result = parser.parse(arq)
+        
+        print("____________* Analisador Sintático Finalizado *____________\n")
+        print("____________* Executando Analisador Semântico *____________\n")
         walk_tree(result)
+        print("____________* Analisador Semântico Finalizado *____________\n")
         
         DotExporter(result).to_picture("ast.png")
 
