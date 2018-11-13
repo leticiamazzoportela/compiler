@@ -104,25 +104,22 @@ def declaracao_funcao(tree):
                 sb['tipo_func'] = leaf_nodes[0]
                 sb['nome_func'] = leaf_nodes[1]
                 sb['param_func'] = leaf_nodes[2]
-            
-                # if 'inteiro' not in sb['param_func'].values() and 'flutuante' not in sb['param_func'].values() and 'None' not in sb['param_func'].values():
+                # for item in sb['param_func']:
+                #     print(item)
+                
+                # if sb['param_func'].__contains__(
+                #         'tipo_param') and 'inteiro' not in sb['param_func']['tipo_param'] and 'flutuante' not in sb['param_func']['tipo_param'] and 'None' not in sb['param_func']['tipo_param']:
                 #     print("Erro semântico (linha X, Coluna Y): Os parâmetros da função precisam ter um tipo válido")
                 #     break
-
+                
                 sb['variaveis'] = body_func
-
-                # FALTA:
-                # verificar se var já foi declarada
-                # se retorno bate com tipo da função
-                # se condicionais estao certas
-                # se tem função principal - impedir passagem de parametro
-                # outras funções não chamam a principal, ela que chama as outras
-                # warning para definicao de função e variaveis não utilizadas
-                # variaveis estão recebendo coisas conforme o tipo
-                # comparações estão certas -> tipos certos
-
-                # if sb['tipo_func'] == 'inteiro' or sb['tipo_func'] != 'flutuante':
-
+                for j in range(0, len(symbols_table)):
+                    for i in range(0, len(sb['variaveis'])):
+                        for k in sb['variaveis'][i]['nome_variavel']: 
+                            if k in symbols_table[j]['nome_variavel']:
+                                print("Erro semântico (linha X, Coluna Y): A variável '%s' já foi declarada" % k)
+                                return
+                
                 symbols_table.append(sb)
                 sb = {}
 
@@ -153,3 +150,12 @@ def run_semantic():
     print(json.dumps(symbols_table, indent=4))
 
     # DotExporter(tree).to_picture("astNova.png")
+
+# TODO se retorno bate com tipo da função
+# TODO se condicionais estao certas
+# TODO se tem função principal - impedir passagem de parametro
+# TODO verificar qtd de parametros - tem 3, devem ser passados 3
+# TODO outras funções não chamam a principal, ela que chama as outras
+# TODO warning para definicao de função e variaveis não utilizadas
+# TODO variaveis estão recebendo coisas conforme o tipo
+# TODO comparações estão certas -> tipos certos
