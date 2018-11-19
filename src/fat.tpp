@@ -2,8 +2,6 @@ inteiro: n[10], a
 flutuante: x
 
 inteiro fatorial(inteiro: n)
-    inteiro: a
-    flutuante: x
     se n > 0 então {não calcula se n > 0}
         fat := 1
         repita

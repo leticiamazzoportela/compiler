@@ -83,45 +83,73 @@ def walk_subtree_body_func(node):
     # print(vars_func)
     return vars_func
 
+def walk_subtree_call_func(node):
+    call_func = []
+
+    for n in PreOrderIter(node):
+        n_name = n.name.split(".")
+
+        if n_name[1] == 'corpo':
+            for no in PreOrderIter(n):
+                no_name = no.name.split(".")
+                if no_name[1] == 'chamada_funcao':
+                    for nd in PreOrderIter(no):
+                        nd_name = nd.name.split(".")
+                        if nd.is_leaf == True:
+                            call_func.append(nd_name[1])
+    return call_func
+
 def declaracao_funcao(tree):
     sb = {}
-
+    ln = []
     for node in PreOrderIter(tree):
         node_name = node.name.split(".")
-
         if node_name[1] == 'declaracao_funcao':
-            leaf_nodes = walk_subtree_func(node)            
-            body_func = walk_subtree_body_func(node)
-            
-            if leaf_nodes[0] != 'inteiro' and leaf_nodes[0] != 'flutuante':
-                print("Erro semântico (linha X, Coluna Y): A função precisa ter um tipo válido")
-                break
-            elif any(d.get('nome_func', None) == leaf_nodes[1] for d in symbols_table):
-                print("Erro semântico (linha X, Coluna Y): a função '%s' já foi declarada" % leaf_nodes[1])
-                break
-            # elif body_func['nome_variavel'][0] 
-            else:
-                sb['tipo_func'] = leaf_nodes[0]
-                sb['nome_func'] = leaf_nodes[1]
-                sb['param_func'] = leaf_nodes[2]
-                # for item in sb['param_func']:
-                #     print(item)
-                
-                # if sb['param_func'].__contains__(
-                #         'tipo_param') and 'inteiro' not in sb['param_func']['tipo_param'] and 'flutuante' not in sb['param_func']['tipo_param'] and 'None' not in sb['param_func']['tipo_param']:
-                #     print("Erro semântico (linha X, Coluna Y): Os parâmetros da função precisam ter um tipo válido")
-                #     break
-                
-                sb['variaveis'] = body_func
-                for j in range(0, len(symbols_table)):
-                    for i in range(0, len(sb['variaveis'])):
-                        for k in sb['variaveis'][i]['nome_variavel']: 
-                            if k in symbols_table[j]['nome_variavel']:
-                                print("Erro semântico (linha X, Coluna Y): A variável '%s' já foi declarada" % k)
-                                return
-                
-                symbols_table.append(sb)
-                sb = {}
+            ln = walk_subtree_func(node)
+
+    if 'principal' not in ln:
+        print("Erro semântico (linha X, Coluna Y): O programa precisa ter uma função principal!")
+        return
+    else:
+        for node in PreOrderIter(tree):
+            node_name = node.name.split(".")
+
+            if node_name[1] == 'declaracao_funcao':
+                leaf_nodes = walk_subtree_func(node)            
+                body_func = walk_subtree_body_func(node)
+                func = walk_subtree_call_func(node)
+                print(func)
+                if any(d.get('nome_func', None) == leaf_nodes[1] for d in symbols_table):
+                    print("Erro semântico (linha X, Coluna Y): A função '%s' já foi declarada!" % leaf_nodes[1])
+                    return
+                elif str(leaf_nodes[1]) == 'principal' and len(leaf_nodes[2]) > 1:
+                    print("Erro semântico (linha X, Coluna Y): A função principal não recebe parâmetros!")
+                    return
+                elif str(leaf_nodes[1]) != 'principal' and 'principal' in func:
+                    print("Erro semântico (linha X, Coluna Y): A função principal não pode ser invocada por outras funções!")
+                    return
+                else:
+                    sb['tipo_func'] = leaf_nodes[0]
+                    sb['nome_func'] = leaf_nodes[1]
+                    sb['param_func'] = leaf_nodes[2]
+                    # for item in sb['param_func']:
+                    #     print(item)
+                    
+                    # if sb['param_func'].__contains__(
+                    #         'tipo_param') and 'inteiro' not in sb['param_func']['tipo_param'] and 'flutuante' not in sb['param_func']['tipo_param'] and 'None' not in sb['param_func']['tipo_param']:
+                    #     print("Erro semântico (linha X, Coluna Y): Os parâmetros da função precisam ter um tipo válido")
+                    #     break
+                    
+                    sb['variaveis'] = body_func
+                    for j in range(0, len(symbols_table)):
+                        for i in range(0, len(sb['variaveis'])):
+                            for k in sb['variaveis'][i]['nome_variavel']: 
+                                if k in symbols_table[j]['nome_variavel']:
+                                    print("Erro semântico (linha X, Coluna Y): A variável '%s' já foi declarada" % k)
+                                    return
+                    
+                    symbols_table.append(sb)
+                    sb = {}
 
     # print(json.dumps(symbols_table, indent=4))
 
@@ -151,11 +179,9 @@ def run_semantic():
 
     # DotExporter(tree).to_picture("astNova.png")
 
-# TODO se retorno bate com tipo da função
-# TODO se condicionais estao certas
-# TODO se tem função principal - impedir passagem de parametro
 # TODO verificar qtd de parametros - tem 3, devem ser passados 3
-# TODO outras funções não chamam a principal, ela que chama as outras
 # TODO warning para definicao de função e variaveis não utilizadas
 # TODO variaveis estão recebendo coisas conforme o tipo
+# TODO se retorno bate com tipo da função - comparar subarvore do retorno com a do parametro da funcao
+# TODO se condicionais estao certas
 # TODO comparações estão certas -> tipos certos
