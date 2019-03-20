@@ -6,6 +6,7 @@ from anytree.exporter import DotExporter
 from scanner import tokens
 from scanner import find_column
 from semantic import walk_tree
+import pruneTree
 
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
@@ -551,11 +552,12 @@ def run_parser(file):
         arq = f.read()
         result = parser.parse(arq)
         
-        print("____________* Analisador Sintático Finalizado *____________\n")
-        print("____________* Executando Analisador Semântico *____________\n")
-        walk_tree(result)
-        print("____________* Analisador Semântico Finalizado *____________\n")
+        # print("____________* Analisador Sintático Finalizado *____________\n")
+        # print("____________* Executando Analisador Semântico *____________\n")
+        # walk_tree(result)
+        # print("____________* Analisador Semântico Finalizado *____________\n")
         
         DotExporter(result).to_picture("ast.png")
+        pruneTree.prune(result)
 
         f.close()

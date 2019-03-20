@@ -118,7 +118,7 @@ def declaracao_funcao(tree):
                 leaf_nodes = walk_subtree_func(node)            
                 body_func = walk_subtree_body_func(node)
                 func = walk_subtree_call_func(node)
-                print(func)
+                
                 if any(d.get('nome_func', None) == leaf_nodes[1] for d in symbols_table):
                     print("Erro semântico (linha X, Coluna Y): A função '%s' já foi declarada!" % leaf_nodes[1])
                     return
@@ -128,7 +128,14 @@ def declaracao_funcao(tree):
                 elif str(leaf_nodes[1]) != 'principal' and 'principal' in func:
                     print("Erro semântico (linha X, Coluna Y): A função principal não pode ser invocada por outras funções!")
                     return
+                # elif len(leaf_nodes[2])/2 != len(func):
+                #     print("Erro semântico (linha X, Coluna Y): A função '%s' precisa ter %d parâmetro(s)!" % (leaf_nodes[1], len(leaf_nodes[2])/2))
+                #     return
                 else:
+                    # if len(leaf_nodes[2])*2 != len(func) and leaf_nodes[1] == 'principal':
+                    #     print('lf', leaf_nodes[1], 'lfs', len(leaf_nodes[2]))
+                    #     print('func', func, 'size', len(func))
+                        
                     sb['tipo_func'] = leaf_nodes[0]
                     sb['nome_func'] = leaf_nodes[1]
                     sb['param_func'] = leaf_nodes[2]

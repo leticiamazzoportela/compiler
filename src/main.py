@@ -14,5 +14,5 @@ else:
     parser.run_parser(sys.argv[1])
 
     # print("____________* Executando Analisador Semântico *____________\n")
-    # semantic.walk_tree()
+    # semantic.run_semantic()
     # print("____________* Analisador Semântico Finalizado *____________\n")

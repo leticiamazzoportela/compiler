@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import ply.lex as lex
 import sys
+import json
 
 palavras_reservadas = {'se' : 'SE', 'então' : 'ENTAO', 'senão' : 'SENAO', 'fim' : 'FIM', 'repita' : 'REPITA',
                 'flutuante' : 'FLUTUANTE', 'inteiro' : 'INTEIRO', 'retorna' : 'RETORNA', 'até' : 'ATE',
@@ -26,6 +27,8 @@ t_DOIS_PONTOS = r'\:'
 t_NEGACAO = r'\!'
 
 t_ignore = ' \t\r'
+
+symbols_table = []
 
 #Lista de funções que definem expressões regulares:
 #************************************************
@@ -98,8 +101,8 @@ def t_error(t):
 lexer = lex.lex() #executa o lexer
 
 #Função que chama o lexer e escaneia um arquivo passado por parâmetro.
-#A classificação dos tokens é armazenada em um arquivo
 def run_scanner(file):
+    naosei = {}
     if file == None:
         print("Arquivo inválido!")
     else:
@@ -114,7 +117,14 @@ def run_scanner(file):
                     break
                 tok.lexpos = find_column(line, tok)
                 print("Linha "+str(tok.lineno)+" - Pos " +str(tok.lexpos)+ ": <" +tok.type+ " , " +str(tok.value)+ ">\n")
+                naosei['linha'] = tok.lineno
+                naosei['posicao'] = tok.lexpos
+                naosei['tipo'] = tok.type
+                naosei['lexema'] = tok.value 
 
+                symbols_table.append(naosei)
+                naosei = {}
             line = f.readline()
 
         f.close()
+        print(json.dumps(symbols_table, indent=4))
