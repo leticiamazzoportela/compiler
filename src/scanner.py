@@ -102,29 +102,43 @@ lexer = lex.lex() #executa o lexer
 
 #Função que chama o lexer e escaneia um arquivo passado por parâmetro.
 def run_scanner(file):
-    naosei = {}
+    st = {}
+    aux = {}
     if file == None:
         print("Arquivo inválido!")
     else:
         fileName = file
         f = open(fileName, 'r')
         line = f.readline()
+        numero_linha = 0
+
         while line:
             lexer.input(line)
+            numero_linha += 1
+            aux['linha'] = numero_linha
+            aux['conteudo'] = []
+
             while True:
                 tok = lexer.token()
                 if not tok:
                     break
                 tok.lexpos = find_column(line, tok)
                 print("Linha "+str(tok.lineno)+" - Pos " +str(tok.lexpos)+ ": <" +tok.type+ " , " +str(tok.value)+ ">\n")
-                naosei['linha'] = tok.lineno
-                naosei['posicao'] = tok.lexpos
-                naosei['tipo'] = tok.type
-                naosei['lexema'] = tok.value 
 
-                symbols_table.append(naosei)
-                naosei = {}
+                st['posicao_inicio'] = tok.lexpos
+                st['tipo'] = tok.type
+                st['lexema'] = tok.value
+
+                aux['conteudo'].append(st)
+                st = {}
+
+            symbols_table.append(aux)
+            aux = {}
             line = f.readline()
 
         f.close()
-        print(json.dumps(symbols_table, indent=4))
+
+        with open('symbols_table.json', 'w') as stFile:
+            json.dump(symbols_table, stFile, indent=4)
+
+        # print(json.dumps(symbols_table, indent=4))

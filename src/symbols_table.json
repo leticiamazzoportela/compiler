@@ -1,0 +1,62 @@
+[
+    {
+        "linha": 1,
+        "conteudo": [
+            {
+                "posicao": 1,
+                "tipo": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao": 9,
+                "tipo": "ID",
+                "lexema": "principal"
+            },
+            {
+                "posicao": 18,
+                "tipo": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao": 19,
+                "tipo": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 2,
+        "conteudo": [
+            {
+                "posicao": 5,
+                "tipo": "RETORNA",
+                "lexema": "retorna"
+            },
+            {
+                "posicao": 12,
+                "tipo": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao": 13,
+                "tipo": "NUM_INTEIRO",
+                "lexema": 0
+            },
+            {
+                "posicao": 14,
+                "tipo": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 3,
+        "conteudo": [
+            {
+                "posicao": 1,
+                "tipo": "FIM",
+                "lexema": "fim"
+            }
+        ]
+    }
+]
