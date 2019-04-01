@@ -2,11 +2,13 @@
 import ply.yacc as yacc
 from anytree import Node, RenderTree, AsciiStyle
 from anytree.exporter import DotExporter
+import json
 
 from scanner import tokens
 from scanner import find_column
 from semantic import walk_tree
 import pruneTree
+import fillSymbolTable
 
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
@@ -558,6 +560,7 @@ def run_parser(file):
         # print("____________* Analisador Semântico Finalizado *____________\n")
         
         DotExporter(result).to_picture("ast.png")
-        pruneTree.prune(result)
+        pt = pruneTree.prune(result)
+        fillSymbolTable.findFunc(pt)
 
         f.close()
