@@ -1,0 +1,10 @@
+[
+    {
+        "tipo": "inteiro",
+        "lexema": "fatorial"
+    },
+    {
+        "tipo": "inteiro",
+        "lexema": "principal"
+    }
+]

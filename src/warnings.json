@@ -1,0 +1,14 @@
+[
+    {
+        "code": 1,
+        "message": "A função não possui conteúdo"
+    },
+    {
+        "code": 2,
+        "message": "A função foi declarada, mas não foi utilizada"
+    },
+    {
+        "code": 3,
+        "message": "A variável foi declarada, mas não foi utilizada"
+    }
+]

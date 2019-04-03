@@ -1,32 +1,62 @@
 from anytree import Node, PostOrderIter, PreOrderIter
 import json
 
-# minha tabela tem que ser por linha! Exemplo: linha x, conteudo {...}; linha y, conteudo {...}
-# Ainda não está assim, mas vou fazer
+
+                    # st['linha'] = n.lineno
+                    # st['posicao'] = '-'
+                    # st['categoria'] = 'funcao'
+                    # st['parametros'] = 'lista'
+                    # st['tipo'] = name(n)
+                    # st['token'] = name(n)
+                    # st['lexema'] = 'estou confusa'
+                    # st['escopo'] = 'nao sei ainda'
+                    # st['utilizado'] = 'averiguar'
+def name(node):
+    node_name = node.name.split('.')[1]
+    return node_name
+
+def showErrors(line, element, code):
+    with open('errors.json', 'r') as f:
+        errors = json.loads(f.read())
+        
+    print('****ERRO SEMÂNTICO***\n')
+    for error in errors:
+        if error['code'] == code:
+            print('Linha: '+str(line)+'\nElemento: '+str(element)+'\nDescrição: '+str(error['message']))
+            print('\n************\n')
+
+def insertTable(content):
+    with open('symbols_table_complete.json', 'w') as f:
+        json.dump(content, f, indent=4)
 
 def findFunc(tree):
     st = {}
-    cabecalho = {}
+    funcoes = []
 
-    cabecalho['conteudo'] = []
-    
     for node in PreOrderIter(tree):
-        node_name = node.name.split('.')[1]
+        node_name = name(node)
 
-        if node_name == 'declaracao':
-            if node.children[0].name.split('.')[1] == 'declaracao_funcao':
-                st['categoria'] = 'funcao'
+        if node_name == 'declaracao_funcao':
+            for n in PreOrderIter(node):
+                if name(n) == 'tipo':
+                    st['tipo'] = name(n.children[0])
+                elif name(n) == 'cabecalho':
+                    st['lexema'] = name(n.children[0])
 
-                for n in PreOrderIter(node):
-                    if n.is_leaf == True and n.parent.name.split('.')[1] == 'tipo':
-                        st['tipo'] = n.name.split('.')[1]
-                        st['linha'] = n.lineno
-        
-                cabecalho['conteudo'].append(st)
-        st = {}
+                    if 'parametro' in n.children:
+                        parametros = {}
+                        for e in PreOrderIter(n):
+                            if name(e.parent) == 'tipo':
+                                parametros['tipo'] = name(e)
+                                parametros['lexema'] = name(e.parent.siblings[0])
+                            
+                            st['parametros'].append(parametros)
+                            parametros = {}
+                    else:
+                        showErrors(6, name(n), 1)
     
-
-    with open('sb.json', 'w') as stFile:
-        json.dump(cabecalho, stFile, indent=4)
-            
-# def findVar(tree):
+            funcoes.append(st)
+            st = {}
+    
+    insertTable(funcoes)
+    # return funcoes
