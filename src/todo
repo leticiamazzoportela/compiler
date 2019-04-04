@@ -1,5 +1,9 @@
-[X] Adicionar coluna categoria (var, func) na tab
-[X] Adicionar coluna tipo
-[] Adiconar coluna Valor
-[] Adiconar coluna escopo
-[] Adicionar coluna utilizada*
+st['linha'] = n.lineno
+st['posicao'] = '-'
+st['categoria'] = 'funcao'
+st['parametros'] = 'lista'
+st['tipo'] = name(n)
+st['token'] = name(n)
+st['lexema'] = 'estou confusa'
+st['escopo'] = 'nao sei ainda'
+st['utilizado'] = 'averiguar'

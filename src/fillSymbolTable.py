@@ -1,33 +1,6 @@
 from anytree import Node, PostOrderIter, PreOrderIter
+from utils import name, getLine, showErrors, insertTable
 import json
-
-
-                    # st['linha'] = n.lineno
-                    # st['posicao'] = '-'
-                    # st['categoria'] = 'funcao'
-                    # st['parametros'] = 'lista'
-                    # st['tipo'] = name(n)
-                    # st['token'] = name(n)
-                    # st['lexema'] = 'estou confusa'
-                    # st['escopo'] = 'nao sei ainda'
-                    # st['utilizado'] = 'averiguar'
-def name(node):
-    node_name = node.name.split('.')[1]
-    return node_name
-
-def showErrors(line, element, code):
-    with open('errors.json', 'r') as f:
-        errors = json.loads(f.read())
-        
-    print('****ERRO SEMÂNTICO***\n')
-    for error in errors:
-        if error['code'] == code:
-            print('Linha: '+str(line)+'\nElemento: '+str(element)+'\nDescrição: '+str(error['message']))
-            print('\n************\n')
-
-def insertTable(content):
-    with open('symbols_table_complete.json', 'w') as f:
-        json.dump(content, f, indent=4)
 
 def findFunc(tree):
     st = {}
@@ -43,20 +16,27 @@ def findFunc(tree):
                 elif name(n) == 'cabecalho':
                     st['lexema'] = name(n.children[0])
 
-                    if 'parametro' in n.children:
+                    if 'parametro' in str(n.children):
                         parametros = {}
+                        st['parametros'] = []
                         for e in PreOrderIter(n):
                             if name(e.parent) == 'tipo':
                                 parametros['tipo'] = name(e)
                                 parametros['lexema'] = name(e.parent.siblings[0])
                             
-                            st['parametros'].append(parametros)
+                                st['parametros'].append(parametros)
                             parametros = {}
-                    else:
-                        showErrors(6, name(n), 1)
-    
+                    
+                    if st['lexema'] == 'principal':
+                        linha = getLine('principal')
+                        if len(st['parametros']) >= 1:
+                            showErrors(linha, st['lexema'], 19)
+                        if st['tipo'] != 'inteiro':
+                            showErrors(linha, st['tipo'], 9)
+                            return
+            
             funcoes.append(st)
             st = {}
     
     insertTable(funcoes)
-    # return funcoes
+    # return funcoes - vou juntar todos os imports depois para fazer um arquivo só

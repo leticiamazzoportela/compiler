@@ -357,6 +357,21 @@
             },
             {
                 "posicao_inicio": 19,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 26,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 28,
+                "token": "ID",
+                "lexema": "a"
+            },
+            {
+                "posicao_inicio": 29,
                 "token": "FECHA_PAR",
                 "lexema": ")"
             }

@@ -1,10 +1,22 @@
 [
     {
         "tipo": "inteiro",
-        "lexema": "fatorial"
+        "lexema": "fatorial",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "n"
+            }
+        ]
     },
     {
         "tipo": "inteiro",
-        "lexema": "principal"
+        "lexema": "principal",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "a"
+            }
+        ]
     }
 ]
