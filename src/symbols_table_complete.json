@@ -12,11 +12,6 @@
     {
         "tipo": "inteiro",
         "lexema": "principal",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "a"
-            }
-        ]
+        "parametros": []
     }
 ]

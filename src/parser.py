@@ -12,7 +12,8 @@ import fillSymbolTable
 
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
-    ('left', 'MULTIPLICACAO', 'DIVISAO')
+    ('left', 'MULTIPLICACAO', 'DIVISAO'),
+    ('left', 'E_LOGICO', 'OU_LOGICO')
 )
 
 id_node = 0
