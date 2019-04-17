@@ -562,6 +562,7 @@ def run_parser(file):
         
         DotExporter(result).to_picture("ast.png")
         pt = pruneTree.prune(result)
-        fillSymbolTable.findFunc(pt)
+        # fillSymbolTable.findFunc(pt)
+        fillSymbolTable.findVar(pt)
 
         f.close()

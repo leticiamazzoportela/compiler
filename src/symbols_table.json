@@ -25,20 +25,20 @@
             {
                 "posicao_inicio": 12,
                 "token": "NUM_INTEIRO",
-                "lexema": 10
+                "lexema": 3
             },
             {
-                "posicao_inicio": 14,
+                "posicao_inicio": 13,
                 "token": "FECHA_COL",
                 "lexema": "]"
             },
             {
-                "posicao_inicio": 15,
+                "posicao_inicio": 14,
                 "token": "VIRGULA",
                 "lexema": ","
             },
             {
-                "posicao_inicio": 17,
+                "posicao_inicio": 16,
                 "token": "ID",
                 "lexema": "a"
             }
@@ -113,26 +113,6 @@
         "conteudo": [
             {
                 "posicao_inicio": 5,
-                "token": "ID",
-                "lexema": "principal"
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 15,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 6,
-        "conteudo": [
-            {
-                "posicao_inicio": 5,
                 "token": "SE",
                 "lexema": "se"
             },
@@ -159,7 +139,7 @@
         ]
     },
     {
-        "linha": 7,
+        "linha": 6,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -179,7 +159,7 @@
         ]
     },
     {
-        "linha": 8,
+        "linha": 7,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -189,7 +169,7 @@
         ]
     },
     {
-        "linha": 9,
+        "linha": 8,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -219,7 +199,7 @@
         ]
     },
     {
-        "linha": 10,
+        "linha": 9,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -249,7 +229,7 @@
         ]
     },
     {
-        "linha": 11,
+        "linha": 10,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -274,7 +254,7 @@
         ]
     },
     {
-        "linha": 12,
+        "linha": 11,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -299,7 +279,7 @@
         ]
     },
     {
-        "linha": 13,
+        "linha": 12,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -309,7 +289,7 @@
         ]
     },
     {
-        "linha": 14,
+        "linha": 13,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -334,7 +314,7 @@
         ]
     },
     {
-        "linha": 15,
+        "linha": 14,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -344,7 +324,7 @@
         ]
     },
     {
-        "linha": 16,
+        "linha": 15,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -354,11 +334,11 @@
         ]
     },
     {
-        "linha": 17,
+        "linha": 16,
         "conteudo": []
     },
     {
-        "linha": 18,
+        "linha": 17,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -383,7 +363,7 @@
         ]
     },
     {
-        "linha": 19,
+        "linha": 18,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -408,7 +388,7 @@
         ]
     },
     {
-        "linha": 20,
+        "linha": 19,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -448,7 +428,7 @@
         ]
     },
     {
-        "linha": 21,
+        "linha": 20,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -473,7 +453,7 @@
         ]
     },
     {
-        "linha": 22,
+        "linha": 21,
         "conteudo": [
             {
                 "posicao_inicio": 1,

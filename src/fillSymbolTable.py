@@ -6,7 +6,9 @@ def findFunc(tree):
     st = {}
     funcoes = []
 
+
     for node in PreOrderIter(tree):
+        st['categoria'] = 'funcao'
         node_name = name(node)
 
         if node_name == 'declaracao_funcao':
@@ -54,11 +56,56 @@ def findFunc(tree):
             funcoes.append(st)
             st = {}
     
-    insertTable(funcoes)
-    # return funcoes - vou juntar todos os imports depois para fazer um arquivo só
+    # insertTable(funcoes)
+    return funcoes 
+    # - vou juntar todos os imports depois para fazer um arquivo só
+
+def findVar(tree):
+    st = {}
+    variaveis = []
+
+
+    for node in PreOrderIter(tree):
+        node_name = name(node)
+
+        if node_name == 'declaracao_variaveis':
+            for n in PreOrderIter(node):
+                if name(n) == 'tipo':
+                    st['tipo'] = name(n.children[0])
+                elif name(n) == 'lista_variaveis':
+                    dados = {}
+                    st['info'] = []
+
+                    for e in PreOrderIter(n):
+                        if len(n.children) >= 2:
+                            if name(e) == 'var':
+                                dados['lexema'] = name(e.children[0])   
+                                
+                                for i in PreOrderIter(e):
+                                    if i.is_leaf:
+                                        if name(i.parent) == 'numero':
+                                            dados['categoria'] = 'vetor'
+                                            dados['dimensao'] = name(i)
+                                        else:
+                                            dados['categoria'] = 'variavel'
+                                
+                                st['info'].append(dados)
+                                dados = {}
+                        else:
+                            dados['lexema'] = name(e)
+                            dados['categoria'] = 'variavel'
+
+                            st['info'] = dados
+                            dados = {}
+
+            variaveis.append(st)
+            st = {}
+
+    insertTable(variaveis)
+    # return variaveis
 
 ## ERROS TRATADOS:
-# 19, 9, 3, 4
-# TRATAR: 12, 13
+# 19, 9, 3, 4, 13
+
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 1, 2, 5, 6?, 7?, 10, 11, 14, 15, 16, 17, 18
+# 1, 2, 5, 6?, 7?, 10, 11, 12, 14, 15, 16, 17, 18

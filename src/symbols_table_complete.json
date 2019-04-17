@@ -1,17 +1,22 @@
 [
     {
         "tipo": "inteiro",
-        "lexema": "fatorial",
-        "parametros": [
+        "info": [
             {
-                "tipo": "inteiro",
-                "lexema": "n"
+                "lexema": "n",
+                "categoria": "variavel"
+            },
+            {
+                "lexema": "a",
+                "categoria": "variavel"
             }
         ]
     },
     {
-        "tipo": "inteiro",
-        "lexema": "principal",
-        "parametros": []
+        "tipo": "flutuante",
+        "info": {
+            "lexema": "x",
+            "categoria": "variavel"
+        }
     }
 ]
