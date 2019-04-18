@@ -24,21 +24,21 @@
             },
             {
                 "posicao_inicio": 12,
-                "token": "ID",
-                "lexema": "s"
+                "token": "NUM_INTEIRO",
+                "lexema": 10
             },
             {
-                "posicao_inicio": 13,
+                "posicao_inicio": 14,
                 "token": "FECHA_COL",
                 "lexema": "]"
             },
             {
-                "posicao_inicio": 14,
+                "posicao_inicio": 15,
                 "token": "VIRGULA",
                 "lexema": ","
             },
             {
-                "posicao_inicio": 16,
+                "posicao_inicio": 17,
                 "token": "ID",
                 "lexema": "a"
             }

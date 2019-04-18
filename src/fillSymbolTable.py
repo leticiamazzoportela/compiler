@@ -38,7 +38,7 @@ def findFunc(tree):
                             showErrors(linha, st['tipo'], 9)
                             return
 
-                elif name(n) == 'corpo' and len(st['lexema']) >=2:
+                elif name(n) == 'corpo' and len(st['lexema']) >= 2:
                         for e in PreOrderIter(n):
                             if name(e) == 'chamada_funcao':
                                 if e.children[0].is_leaf:
@@ -64,7 +64,6 @@ def findVar(tree):
     st = {}
     variaveis = []
 
-
     for node in PreOrderIter(tree):
         node_name = name(node)
 
@@ -82,16 +81,15 @@ def findVar(tree):
                                 dados['lexema'] = name(e.children[0])   
                                 
                                 for i in PreOrderIter(e):
-                                    if name(i.parent) == 'fator':
-                                        if i.children[0].is_leaf:
-                                            linha = i.children[0].lineno - 20
-                                            
-                                            if name(i) != 'numero':
-                                                showErrors(linha, name(i.children[0]), 13)
-                                                return
+                                    if name(i.parent) == 'fator' and i.children[0].is_leaf:
+                                        linha = i.children[0].lineno - 20
+                                        
+                                        if name(i) != 'numero':
+                                            showErrors(linha, name(i.children[0]), 13)
+                                            return
 
-                                            dados['categoria'] = 'vetor'
-                                            dados['dimensao'] = name(i.children[0])
+                                        dados['categoria'] = 'vetor'
+                                        dados['dimensao'] = name(i.children[0])
                                             
                                     elif name(i.parent) == 'var':
                                         dados['categoria'] = 'variavel'
@@ -114,5 +112,9 @@ def findVar(tree):
 ## ERROS TRATADOS:
 # 19, 9, 3, 4, 13
 
+## FILA TRATAMENTO:
+## Escopo
+## 2, 8*, 10, 11, 14
+
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 1, 2, 5, 6?, 7?, 10, 11, 12, 14, 15, 16, 17, 18
+# 1, 5, 6, 7, 12, 15, 16, 17, 18
