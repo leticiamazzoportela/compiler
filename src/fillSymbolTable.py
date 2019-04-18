@@ -82,12 +82,19 @@ def findVar(tree):
                                 dados['lexema'] = name(e.children[0])   
                                 
                                 for i in PreOrderIter(e):
-                                    if i.is_leaf:
-                                        if name(i.parent) == 'numero':
+                                    if name(i.parent) == 'fator':
+                                        if i.children[0].is_leaf:
+                                            linha = i.children[0].lineno - 20
+                                            
+                                            if name(i) != 'numero':
+                                                showErrors(linha, name(i.children[0]), 13)
+                                                return
+
                                             dados['categoria'] = 'vetor'
-                                            dados['dimensao'] = name(i)
-                                        else:
-                                            dados['categoria'] = 'variavel'
+                                            dados['dimensao'] = name(i.children[0])
+                                            
+                                    elif name(i.parent) == 'var':
+                                        dados['categoria'] = 'variavel'
                                 
                                 st['info'].append(dados)
                                 dados = {}

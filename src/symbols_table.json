@@ -24,8 +24,8 @@
             },
             {
                 "posicao_inicio": 12,
-                "token": "NUM_INTEIRO",
-                "lexema": 3
+                "token": "ID",
+                "lexema": "s"
             },
             {
                 "posicao_inicio": 13,
