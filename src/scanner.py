@@ -124,7 +124,7 @@ def run_scanner(file):
                 if not tok:
                     break
                 tok.lexpos = find_column(line, tok)
-                print("Linha "+str(tok.lineno)+" - Pos " +str(tok.lexpos)+ ": <" +tok.type+ " , " +str(tok.value)+ ">\n")
+                # print("Linha "+str(tok.lineno)+" - Pos " +str(tok.lexpos)+ ": <" +tok.type+ " , " +str(tok.value)+ ">\n")
 
                 st['posicao_inicio'] = tok.lexpos
                 st['token'] = tok.type

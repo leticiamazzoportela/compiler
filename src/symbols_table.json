@@ -113,6 +113,30 @@
         "conteudo": [
             {
                 "posicao_inicio": 5,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
+            },
+            {
+                "posicao_inicio": 14,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 16,
+                "token": "ID",
+                "lexema": "b"
+            }
+        ]
+    },
+    {
+        "linha": 6,
+        "conteudo": []
+    },
+    {
+        "linha": 7,
+        "conteudo": [
+            {
+                "posicao_inicio": 5,
                 "token": "SE",
                 "lexema": "se"
             },
@@ -139,7 +163,7 @@
         ]
     },
     {
-        "linha": 6,
+        "linha": 8,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -159,7 +183,7 @@
         ]
     },
     {
-        "linha": 7,
+        "linha": 9,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -169,7 +193,7 @@
         ]
     },
     {
-        "linha": 8,
+        "linha": 10,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -199,7 +223,7 @@
         ]
     },
     {
-        "linha": 9,
+        "linha": 11,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -229,7 +253,7 @@
         ]
     },
     {
-        "linha": 10,
+        "linha": 12,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -254,7 +278,7 @@
         ]
     },
     {
-        "linha": 11,
+        "linha": 13,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -279,7 +303,7 @@
         ]
     },
     {
-        "linha": 12,
+        "linha": 14,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -289,7 +313,7 @@
         ]
     },
     {
-        "linha": 13,
+        "linha": 15,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -303,8 +327,8 @@
             },
             {
                 "posicao_inicio": 17,
-                "token": "NUM_INTEIRO",
-                "lexema": 0
+                "token": "ID",
+                "lexema": "b"
             },
             {
                 "posicao_inicio": 18,
@@ -314,7 +338,7 @@
         ]
     },
     {
-        "linha": 14,
+        "linha": 16,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -324,7 +348,7 @@
         ]
     },
     {
-        "linha": 15,
+        "linha": 17,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -334,11 +358,11 @@
         ]
     },
     {
-        "linha": 16,
+        "linha": 18,
         "conteudo": []
     },
     {
-        "linha": 17,
+        "linha": 19,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -363,7 +387,7 @@
         ]
     },
     {
-        "linha": 18,
+        "linha": 20,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -388,7 +412,7 @@
         ]
     },
     {
-        "linha": 19,
+        "linha": 21,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -428,7 +452,7 @@
         ]
     },
     {
-        "linha": 20,
+        "linha": 22,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -453,7 +477,7 @@
         ]
     },
     {
-        "linha": 21,
+        "linha": 23,
         "conteudo": [
             {
                 "posicao_inicio": 1,

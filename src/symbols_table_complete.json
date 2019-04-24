@@ -1,6 +1,44 @@
 [
     {
+        "categoria": "funcao",
+        "tipo": "flutuante",
+        "lexema": "fatorial",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "n"
+            }
+        ],
+        "retorno": [
+            {
+                "tipo": "var",
+                "elemento": "b"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
         "tipo": "inteiro",
+        "lexema": "principal",
+        "parametros": [],
+        "retorno": [
+            {
+                "tipo": "numero",
+                "elemento": "0"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "local",
+        "info": {
+            "lexema": "b",
+            "categoria": "variavel"
+        }
+    },
+    {
+        "tipo": "inteiro",
+        "escopo": "global",
         "info": [
             {
                 "lexema": "n",
@@ -15,6 +53,7 @@
     },
     {
         "tipo": "flutuante",
+        "escopo": "global",
         "info": {
             "lexema": "x",
             "categoria": "variavel"

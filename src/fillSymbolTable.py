@@ -6,7 +6,6 @@ def findFunc(tree):
     st = {}
     funcoes = []
 
-
     for node in PreOrderIter(tree):
         st['categoria'] = 'funcao'
         node_name = name(node)
@@ -22,7 +21,8 @@ def findFunc(tree):
                         parametros = {}
                         st['parametros'] = []
                         for e in PreOrderIter(n):
-                            if name(e.parent) == 'tipo':
+                            father = e.parent
+                            if name(father) == 'tipo' and name(father.parent) == 'parametro':
                                 parametros['tipo'] = name(e)
                                 parametros['lexema'] = name(e.parent.siblings[0])
                             
@@ -39,26 +39,33 @@ def findFunc(tree):
                             return
 
                 elif name(n) == 'corpo' and len(st['lexema']) >= 2:
-                        for e in PreOrderIter(n):
-                            if name(e) == 'chamada_funcao':
-                                if e.children[0].is_leaf:
-                                    linha = e.children[0].lineno - 21
-                                
-                                if 'principal' in str(e.children):
-                                    if st['lexema'] != 'principal':
-                                        linha = getLine('principal')
-                                        showErrors(linha, 'principal', 3)
-                                    else:
-                                        showErrors(linha, 'principal', 4)
-                                    return
-                    
+                    for e in PreOrderIter(n):
+                        if name(e) == 'chamada_funcao':
+                            if e.children[0].is_leaf:
+                                linha = e.children[0].lineno - 21
+                            
+                            if 'principal' in str(e.children):
+                                if st['lexema'] != 'principal':
+                                    linha = getLine('principal')
+                                    showErrors(linha, 'principal', 3)
+                                else:
+                                    showErrors(linha, 'principal', 4)
+                                return
+                        if name(e) == 'retorna':
+                            st['retorno'] = []
+                            retorno = {}
+                            for child in PreOrderIter(e):
+                                if (child.is_leaf):
+                                    retorno['tipo'] = name(child.parent)
+                                    retorno['elemento'] = name(child)
+
+                                    st['retorno'].append(retorno)
+                                retorno = {}
             
             funcoes.append(st)
             st = {}
     
-    # insertTable(funcoes)
     return funcoes 
-    # - vou juntar todos os imports depois para fazer um arquivo só
 
 def findVar(tree):
     st = {}
@@ -71,6 +78,11 @@ def findVar(tree):
             for n in PreOrderIter(node):
                 if name(n) == 'tipo':
                     st['tipo'] = name(n.children[0])
+
+                    if 'declaracao_funcao' not in str(n.ancestors):
+                        st['escopo'] = 'global'
+                    else:
+                        st['escopo'] = 'local'
                 elif name(n) == 'lista_variaveis':
                     dados = {}
                     st['info'] = []
@@ -106,11 +118,20 @@ def findVar(tree):
             variaveis.append(st)
             st = {}
 
-    insertTable(variaveis)
-    # return variaveis
+    return variaveis
+
+def fillSymbolTable(tree):
+    funcoes = findFunc(tree)
+    # insertTable(funcoes)
+
+    variaveis = findVar(tree)
+    insertTable(funcoes+variaveis)
 
 ## ERROS TRATADOS:
 # 19, 9, 3, 4, 13
+
+## Tratamento antes de andar na tabela:
+## Escopo
 
 ## FILA TRATAMENTO:
 ## Escopo

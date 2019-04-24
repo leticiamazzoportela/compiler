@@ -8,8 +8,8 @@ from scanner import tokens
 from scanner import find_column
 from semantic import walk_tree
 import pruneTree
-import fillSymbolTable
-
+from fillSymbolTable import fillSymbolTable
+from walkSymbolTable import verifyReturn
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
     ('left', 'MULTIPLICACAO', 'DIVISAO'),
@@ -561,8 +561,10 @@ def run_parser(file):
         # print("____________* Analisador Semântico Finalizado *____________\n")
         
         DotExporter(result).to_picture("ast.png")
-        pt = pruneTree.prune(result)
-        # fillSymbolTable.findFunc(pt)
-        fillSymbolTable.findVar(pt)
+        
+        pt = pruneTree.prune(result) # Poda a árvore
+        fillSymbolTable(pt) #Preenche a tabela de símbolos
+        
+        verifyReturn()
 
         f.close()
