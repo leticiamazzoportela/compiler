@@ -372,85 +372,6 @@
             {
                 "posicao_inicio": 9,
                 "token": "ID",
-                "lexema": "fatorial"
-            },
-            {
-                "posicao_inicio": 17,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 18,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 25,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 27,
-                "token": "ID",
-                "lexema": "h"
-            },
-            {
-                "posicao_inicio": 28,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 20,
-        "conteudo": [
-            {
-                "posicao_inicio": 5,
-                "token": "RETORNA",
-                "lexema": "retorna"
-            },
-            {
-                "posicao_inicio": 12,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "NUM_INTEIRO",
-                "lexema": 0
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 21,
-        "conteudo": [
-            {
-                "posicao_inicio": 1,
-                "token": "FIM",
-                "lexema": "fim"
-            }
-        ]
-    },
-    {
-        "linha": 22,
-        "conteudo": []
-    },
-    {
-        "linha": 23,
-        "conteudo": [
-            {
-                "posicao_inicio": 1,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 9,
-                "token": "ID",
                 "lexema": "principal"
             },
             {
@@ -466,7 +387,7 @@
         ]
     },
     {
-        "linha": 24,
+        "linha": 20,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -491,7 +412,7 @@
         ]
     },
     {
-        "linha": 25,
+        "linha": 21,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -531,7 +452,7 @@
         ]
     },
     {
-        "linha": 26,
+        "linha": 22,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -556,7 +477,7 @@
         ]
     },
     {
-        "linha": 27,
+        "linha": 23,
         "conteudo": [
             {
                 "posicao_inicio": 1,

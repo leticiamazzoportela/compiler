@@ -1,5 +1,5 @@
 from anytree import Node, PostOrderIter, PreOrderIter
-from utils import name, getLine, showErrors, insertTable, walkTable
+from utils import name, getLine, showErrors, insertTable
 import json
 
 def findFunc(tree):
@@ -62,7 +62,6 @@ def findFunc(tree):
 
                                     st['retorno'].append(retorno)
                                 retorno = {}
-            
             
             
             funcoes.append(st)
@@ -133,4 +132,4 @@ def fillSymbolTable(tree):
 # 19, 9, 3, 4, 13, 2(+-), 5 (questao da linha)
 
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 1, 6, 7, 10, 11, 12, 14, 15, 16, 17, 18
+# 6, 7, 10, 11, 12, 14, 15, 16, 17, 18

@@ -25,5 +25,4 @@ def verifyFuncStatement():
                 linha = getLine(funcs[i]) # Isso tem aque arrumar, pois não pega a linha do nome certo quando tem o nome repetido varias vezes
                 showErrors(linha, funcs[i], 5)
                 return
-    
-    print(funcs)
+            
