@@ -9,7 +9,7 @@ from scanner import find_column
 from semantic import walk_tree
 import pruneTree
 from fillSymbolTable import fillSymbolTable
-from walkSymbolTable import verifyReturn
+from walkSymbolTable import verifyReturn, verifyFuncStatement
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
     ('left', 'MULTIPLICACAO', 'DIVISAO'),
@@ -566,5 +566,6 @@ def run_parser(file):
         fillSymbolTable(pt) #Preenche a tabela de símbolos
         
         verifyReturn()
+        verifyFuncStatement()
 
         f.close()

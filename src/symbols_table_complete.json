@@ -1,6 +1,18 @@
 [
     {
         "categoria": "funcao",
+        "tipo": "inteiro",
+        "lexema": "principal",
+        "parametros": [],
+        "retorno": [
+            {
+                "tipo": "numero",
+                "elemento": "0"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
         "tipo": "flutuante",
         "lexema": "fatorial",
         "parametros": [
@@ -11,16 +23,21 @@
         ],
         "retorno": [
             {
-                "tipo": "var",
-                "elemento": "b"
+                "tipo": "numero",
+                "elemento": "0"
             }
         ]
     },
     {
         "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "principal",
-        "parametros": [],
+        "lexema": "fatorial",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "h"
+            }
+        ],
         "retorno": [
             {
                 "tipo": "numero",
