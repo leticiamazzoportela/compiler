@@ -1,7 +1,7 @@
 [
     {
         "code": 1,
-        "message": "ACHAR ERRO"
+        "message": "Aviso: A função não possui conteúdo"
     },
     {
         "code": 2,
@@ -29,7 +29,7 @@
     },
     {
         "code": 8,
-        "message": "ACHAR ERRO"
+        "message": "Aviso: A função foi declarada, mas não foi utilizada"
     },
     {
         "code": 9,
@@ -74,5 +74,9 @@
     {
         "code": 19,
         "message": "A função principal não deve possuir parâmetros"
+    },
+    {
+        "code": 20,
+        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
     }
 ]

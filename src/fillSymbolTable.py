@@ -128,6 +128,7 @@ def fillSymbolTable(tree):
 
     insertTable(funcoes+variaveis)
     verifyParameters(tree)
+    verifyCallFunc(tree)
 
 def verifyParameters(tree):
     content = walkTable()
@@ -143,11 +144,31 @@ def verifyParameters(tree):
                     if len(e.children) != size:
                         linha = getLine(nameFunc) # problema da linha
                         showErrors(linha, nameFunc, 6)
+
+def verifyCallFunc(tree):
+    content = walkTable()
+    funcsTable = []
+    funcsTree = []
+
+    for item in content:
+        if 'categoria' in item and item['categoria'] == 'funcao':
+            funcsTable.append(item['lexema'])
+    
+    for e in PreOrderIter(tree):
+        if name(e) == 'chamada_funcao':
+            funcsTree.append(name(e.children[0]))
+    
+    for func in funcsTree:
+        if func not in funcsTable:
+            linha = getLine(func)
+            showErrors(linha, func, 10)
                     
 ## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 2(+-), 5, 6
+# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10
 
-## Em todos tem o problema da linha
+## Em quase todos tem o problema da linha
 
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 7, 10, 11, 12, 14, 15, 16, 17, 18
+# 7!, 11, 12, 14, 15, 16, 17, 18
+
+## ! = Mais complicados
