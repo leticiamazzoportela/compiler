@@ -1,5 +1,5 @@
 from anytree import Node, PostOrderIter, PreOrderIter
-from utils import name, getLine, showErrors, insertTable
+from utils import name, getLine, showErrors, insertTable, walkTable
 import json
 
 def findFunc(tree):
@@ -127,9 +127,27 @@ def fillSymbolTable(tree):
     variaveis = findVar(tree)
 
     insertTable(funcoes+variaveis)
+    verifyParameters(tree)
 
+def verifyParameters(tree):
+    content = walkTable()
+    size = 0
+
+    for item in content:
+        if 'categoria' in item and item['categoria'] == 'funcao':
+            size = len(item['parametros'])
+            nameFunc = item['lexema']
+    
+            for e in PreOrderIter(tree):
+                if name(e) == 'lista_argumentos' and name(e.siblings[0]) == nameFunc:
+                    if len(e.children) != size:
+                        linha = getLine(nameFunc) # problema da linha
+                        showErrors(linha, nameFunc, 6)
+                    
 ## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 2(+-), 5 (questao da linha)
+# 19, 9, 3, 4, 13, 2(+-), 5, 6
+
+## Em todos tem o problema da linha
 
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 6, 7, 10, 11, 12, 14, 15, 16, 17, 18
+# 7, 10, 11, 12, 14, 15, 16, 17, 18
