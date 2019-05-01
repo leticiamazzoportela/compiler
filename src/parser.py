@@ -9,7 +9,7 @@ from scanner import find_column
 from semantic import walk_tree
 import pruneTree
 from fillSymbolTable import fillSymbolTable
-from walkSymbolTable import verifyReturn, verifyFuncStatement
+from walkSymbolTable import verifyReturn, verifyFuncStatement, verifyVarStatement
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
     ('left', 'MULTIPLICACAO', 'DIVISAO'),
@@ -567,5 +567,5 @@ def run_parser(file):
         
         verifyReturn()
         verifyFuncStatement()
-
+        verifyVarStatement()
         f.close()

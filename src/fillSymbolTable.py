@@ -164,11 +164,11 @@ def verifyCallFunc(tree):
             showErrors(linha, func, 10)
                     
 ## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10
+# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10, 11
 
 ## Em quase todos tem o problema da linha
 
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 7!, 11, 12, 14, 15, 16, 17, 18
+# 7!, 12, 14, 15, 16, 17, 18
 
 ## ! = Mais complicados

@@ -22,7 +22,33 @@ def verifyFuncStatement():
     for i in range(0, len(funcs)):
         for j in range(0, i):
             if funcs[i] == funcs[j]:
-                linha = getLine(funcs[i]) # Isso tem aque arrumar, pois não pega a linha do nome certo quando tem o nome repetido varias vezes
+                linha = getLine(funcs[i])
                 showErrors(linha, funcs[i], 5)
+                return
+
+def verifyVarStatement():
+    content = walkTable()
+    var = []
+
+    for item in content:
+        if 'info' in item:
+            if 'lexema' in item['info']:
+                var.append(item['info']['lexema']+'-'+item['escopo'])
+            else:
+                for e in range(len(item['info'])):
+                    if 'lexema' in item['info'][e]:
+                        var.append(item['info'][e]['lexema']+'-'+item['escopo'])
+
+    for i in range(0, len(var)):
+        elementi = var[i].split('-')[0]
+        escopo = var[i].split('-')[1]
+
+        for j in range(0, i):
+            elementj = var[j].split('-')[0]
+            escopoSec = var[j].split('-')[1]
+
+            if (var[i] == var[j] or (elementi == elementj and escopo != escopoSec)):
+                linha = getLine(elementi)
+                showErrors(linha, elementi, 11)
                 return
             

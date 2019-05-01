@@ -37,6 +37,14 @@
         }
     },
     {
+        "tipo": "flutuante",
+        "escopo": "local",
+        "info": {
+            "lexema": "b",
+            "categoria": "variavel"
+        }
+    },
+    {
         "tipo": "inteiro",
         "escopo": "global",
         "info": [
