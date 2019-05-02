@@ -69,7 +69,7 @@
     },
     {
         "code": 18,
-        "message": "O programa principal deve ser finalizado"
+        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
     },
     {
         "code": 19,
@@ -77,6 +77,6 @@
     },
     {
         "code": 20,
-        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
+        "message": ""
     }
 ]

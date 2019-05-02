@@ -122,6 +122,12 @@ def findVar(tree):
 
     return variaveis
 
+# def findConditional(tree):
+#     st = {}
+
+#     for node in PreOrderIter(tree):
+
+
 def fillSymbolTable(tree):
     funcoes = findFunc(tree)
     variaveis = findVar(tree)
@@ -129,6 +135,7 @@ def fillSymbolTable(tree):
     insertTable(funcoes+variaveis)
     verifyParameters(tree)
     verifyCallFunc(tree)
+    verifyCallVar(tree)
 
 def verifyParameters(tree):
     content = walkTable()
@@ -162,13 +169,40 @@ def verifyCallFunc(tree):
         if func not in funcsTable:
             linha = getLine(func)
             showErrors(linha, func, 10)
+
+def verifyCallVar(tree):
+    content = walkTable()
+    varTable = []
+    varTree = []
+    params = []
+
+    for item in content:
+        if 'info' in item:
+            if 'lexema' in item['info']:
+                varTable.append(item['info']['lexema'])
+            else:
+                for e in range(len(item['info'])):
+                    if 'lexema' in item['info'][e]:
+                        varTable.append(item['info'][e]['lexema'])
+        elif 'parametros' in item and len(item['parametros']) > 0:
+            params.append(item['parametros'][0]['lexema'])
+    
+    for e in PreOrderIter(tree):
+        if name(e) == 'var' and name(e.parent) == 'atribuicao':
+            varTree.append(name(e.children[0]))
+    
+    for i in range(0, len(varTree)):
+        element = varTree[i]
+        if element not in varTable and element not in params:
+            linha = getLine(element)
+            showErrors(linha, element, 14)
+            return
                     
 ## ERROS TRATADOS:
 # 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10, 11
 
-## Em quase todos tem o problema da linha
-
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 7!, 12, 14, 15, 16, 17, 18
+# 7!, 12!, 14, 15, 16, 17
 
 ## ! = Mais complicados
+## Em quase todos tem o problema da linha

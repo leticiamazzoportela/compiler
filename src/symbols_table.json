@@ -40,7 +40,17 @@
             {
                 "posicao_inicio": 17,
                 "token": "ID",
-                "lexema": "a"
+                "lexema": "fat"
+            },
+            {
+                "posicao_inicio": 20,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 22,
+                "token": "ID",
+                "lexema": "b"
             }
         ]
     },
@@ -113,50 +123,6 @@
         "conteudo": [
             {
                 "posicao_inicio": 5,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 16,
-                "token": "ID",
-                "lexema": "b"
-            }
-        ]
-    },
-    {
-        "linha": 6,
-        "conteudo": [
-            {
-                "posicao_inicio": 5,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 16,
-                "token": "ID",
-                "lexema": "b"
-            }
-        ]
-    },
-    {
-        "linha": 7,
-        "conteudo": []
-    },
-    {
-        "linha": 8,
-        "conteudo": [
-            {
-                "posicao_inicio": 5,
                 "token": "SE",
                 "lexema": "se"
             },
@@ -183,7 +149,7 @@
         ]
     },
     {
-        "linha": 9,
+        "linha": 6,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -203,7 +169,7 @@
         ]
     },
     {
-        "linha": 10,
+        "linha": 7,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -213,7 +179,7 @@
         ]
     },
     {
-        "linha": 11,
+        "linha": 8,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -243,7 +209,7 @@
         ]
     },
     {
-        "linha": 12,
+        "linha": 9,
         "conteudo": [
             {
                 "posicao_inicio": 13,
@@ -273,7 +239,7 @@
         ]
     },
     {
-        "linha": 13,
+        "linha": 10,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -298,7 +264,7 @@
         ]
     },
     {
-        "linha": 14,
+        "linha": 11,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -323,7 +289,7 @@
         ]
     },
     {
-        "linha": 15,
+        "linha": 12,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -333,7 +299,7 @@
         ]
     },
     {
-        "linha": 16,
+        "linha": 13,
         "conteudo": [
             {
                 "posicao_inicio": 9,
@@ -358,7 +324,7 @@
         ]
     },
     {
-        "linha": 17,
+        "linha": 14,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -368,7 +334,7 @@
         ]
     },
     {
-        "linha": 18,
+        "linha": 15,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -378,11 +344,11 @@
         ]
     },
     {
-        "linha": 19,
+        "linha": 16,
         "conteudo": []
     },
     {
-        "linha": 20,
+        "linha": 17,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -407,7 +373,7 @@
         ]
     },
     {
-        "linha": 21,
+        "linha": 18,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -432,7 +398,7 @@
         ]
     },
     {
-        "linha": 22,
+        "linha": 19,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -472,7 +438,7 @@
         ]
     },
     {
-        "linha": 23,
+        "linha": 20,
         "conteudo": [
             {
                 "posicao_inicio": 5,
@@ -497,7 +463,7 @@
         ]
     },
     {
-        "linha": 24,
+        "linha": 21,
         "conteudo": [
             {
                 "posicao_inicio": 1,

@@ -1,7 +1,7 @@
 [
     {
         "categoria": "funcao",
-        "tipo": "flutuante",
+        "tipo": "inteiro",
         "lexema": "fatorial",
         "parametros": [
             {
@@ -29,22 +29,6 @@
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "local",
-        "info": {
-            "lexema": "b",
-            "categoria": "variavel"
-        }
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "local",
-        "info": {
-            "lexema": "b",
-            "categoria": "variavel"
-        }
-    },
-    {
         "tipo": "inteiro",
         "escopo": "global",
         "info": [
@@ -54,7 +38,7 @@
                 "dimensao": "10"
             },
             {
-                "lexema": "a",
+                "lexema": "fat",
                 "categoria": "variavel"
             }
         ]
