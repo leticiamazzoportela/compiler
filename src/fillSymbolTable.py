@@ -32,13 +32,21 @@ def findFunc(tree):
                     if st['lexema'] == 'principal':
                         linha = getLine('principal')
                         if len(st['parametros']) >= 1:
-                            showErrors(linha, st['parametros'][0]['tipo'], 19)
+                            showErrors(linha, 'err', st['parametros'][0]['tipo'], 19)
     
                         if st['tipo'] != 'inteiro':
-                            showErrors(linha, st['tipo'], 9)
+                            showErrors(linha, 'err', st['tipo'], 9)
                             return
 
                 elif name(n) == 'corpo' and len(st['lexema']) >= 2:
+                    if 'retorno' not in str(n.children):
+                        showErrors(getLine(st['lexema']), 'err', st['lexema'], 2)
+                        return
+
+                    if len(n.children) <= 1:
+                        showErrors(getLine(name(n)), 'warn', st['lexema'], 1)
+
+
                     for e in PreOrderIter(n):
                         if name(e) == 'chamada_funcao':
                             if e.children[0].is_leaf:
@@ -47,9 +55,9 @@ def findFunc(tree):
                             if 'principal' in str(e.children):
                                 if st['lexema'] != 'principal':
                                     linha = getLine('principal')
-                                    showErrors(linha, 'principal', 3)
+                                    showErrors(linha, 'err', 'principal', 3)
                                 else:
-                                    showErrors(linha, 'principal', 4)
+                                    showErrors(linha, 'err', 'principal', 4)
                                 return
 
                         if name(e) == 'retorna':
@@ -99,7 +107,7 @@ def findVar(tree):
                                         linha = i.children[0].lineno - 20
                                         
                                         if name(i) != 'numero':
-                                            showErrors(linha, name(i.children[0]), 13)
+                                            showErrors(linha, 'err', name(i.children[0]), 13)
                                             return
 
                                         dados['categoria'] = 'vetor'
@@ -157,7 +165,7 @@ def verifyParameters(tree):
                 if name(e) == 'lista_argumentos' and name(e.siblings[0]) == nameFunc:
                     if len(e.children) != size:
                         linha = getLine(nameFunc) # problema da linha
-                        showErrors(linha, nameFunc, 6)
+                        showErrors(linha, 'err', nameFunc, 6)
                     else:
                         for i in PreOrderIter(e):
                             if i.is_leaf and name(i.parent) == 'var':
@@ -191,7 +199,7 @@ def verifyParameters(tree):
     for e in params:
         for i in argsComp:
             if e['func'] == i['func'] and e['tipo'] != i['tipo']:
-                showErrors(getLine(e['func']), e['func'], 7)
+                showErrors(getLine(e['func']), 'err', e['func'], 7)
 
 
 def verifyCallFunc(tree):
@@ -210,7 +218,7 @@ def verifyCallFunc(tree):
     for func in funcsTree:
         if func not in funcsTable:
             linha = getLine(func)
-            showErrors(linha, func, 10)
+            showErrors(linha, 'err', func, 10)
 
 def verifyCallVar(tree):
     content = walkTable()
@@ -237,14 +245,18 @@ def verifyCallVar(tree):
         element = varTree[i]
         if element not in varTable and element not in params:
             linha = getLine(element)
-            showErrors(linha, element, 14)
+            showErrors(linha, 'err', element, 14)
             return
                     
 ## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10, 11, 14
+# 19, 9, 3, 4, 13, 5, 6, 10, 11, 14, 7
 
-## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 7!, 12!
-# Salvar if else na tabela de simbolo, laco de repeticao na tabela
+## AVISOS
+### 18, 8, 1
+
+## FALTA
+### ERROS: 12, arrumar 2 (por exemplo, se declaro uma funcao vazia, sem retornar nada, buga tudo)
+### Salvar if else na tabela de simbolo, laco de repeticao na tabela
 
 ## Em quase todos tem o problema da linha
+### Ideia: Salvar a linha no nome do nó, aí hora que eu quiser a linha, é só fazer split

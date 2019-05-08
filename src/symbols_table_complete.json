@@ -2,6 +2,18 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
+        "lexema": "principal",
+        "parametros": [],
+        "retorno": [
+            {
+                "tipo": "numero",
+                "elemento": "0"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
         "lexema": "fatorial",
         "parametros": [
             {
@@ -19,14 +31,8 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "principal",
-        "parametros": [],
-        "retorno": [
-            {
-                "tipo": "numero",
-                "elemento": "0"
-            }
-        ]
+        "lexema": "feliz",
+        "parametros": []
     },
     {
         "tipo": "inteiro",

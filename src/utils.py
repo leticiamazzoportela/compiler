@@ -21,11 +21,14 @@ def getLine(element):
         
     return None
 
-def showErrors(line, element, code):
+def showErrors(line, tipo, element, code):
     with open('errors.json', 'r') as f:
         errors = json.loads(f.read())
-        
-    print('****ERRO SEMÂNTICO***\n')
+    
+    if tipo == 'err':
+        print('****ERRO SEMÂNTICO***\n')
+    else:
+        print('****AVISO***\n')
     for error in errors:
         if error['code'] == code:
             print('Linha: '+str(line)+'\nElemento: '+'"'+str(element)+'"'+'\nDescrição: '+str(error['message']))
