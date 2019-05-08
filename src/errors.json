@@ -56,27 +56,11 @@
         "message": "A variável ainda não foi declarada"
     },
     {
-        "code": 15,
-        "message": "A condicional deve ser finalizada"
-    },
-    {
-        "code": 16,
-        "message": "O laço de repetição deve ser finalizado"
-    },
-    {
-        "code": 17,
-        "message": "O termo 'SENÃO' deve estar após um 'SE'"
-    },
-    {
         "code": 18,
         "message": "Aviso: A variável foi declarada, mas não foi utilizada"
     },
     {
         "code": 19,
         "message": "A função principal não deve possuir parâmetros"
-    },
-    {
-        "code": 20,
-        "message": ""
     }
 ]

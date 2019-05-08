@@ -41,16 +41,6 @@
                 "posicao_inicio": 17,
                 "token": "ID",
                 "lexema": "fat"
-            },
-            {
-                "posicao_inicio": 20,
-                "token": "VIRGULA",
-                "lexema": ","
-            },
-            {
-                "posicao_inicio": 22,
-                "token": "ID",
-                "lexema": "b"
             }
         ]
     },

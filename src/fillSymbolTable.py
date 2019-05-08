@@ -122,12 +122,6 @@ def findVar(tree):
 
     return variaveis
 
-# def findConditional(tree):
-#     st = {}
-
-#     for node in PreOrderIter(tree):
-
-
 def fillSymbolTable(tree):
     funcoes = findFunc(tree)
     variaveis = findVar(tree)
@@ -140,17 +134,65 @@ def fillSymbolTable(tree):
 def verifyParameters(tree):
     content = walkTable()
     size = 0
+    args = []
+    params = []
+    argsComp = []
+    p = {}
+    a = {}
+    ags = {}
 
     for item in content:
         if 'categoria' in item and item['categoria'] == 'funcao':
             size = len(item['parametros'])
             nameFunc = item['lexema']
+
+            if size > 0:
+                p['func'] = nameFunc
+                p['tipo'] = item['parametros'][0]['tipo']
+                p['nome'] = item['parametros'][0]['lexema']
+                params.append(p)
+                p = {}
     
             for e in PreOrderIter(tree):
                 if name(e) == 'lista_argumentos' and name(e.siblings[0]) == nameFunc:
                     if len(e.children) != size:
                         linha = getLine(nameFunc) # problema da linha
                         showErrors(linha, nameFunc, 6)
+                    else:
+                        for i in PreOrderIter(e):
+                            if i.is_leaf and name(i.parent) == 'var':
+                                a['func'] = nameFunc
+                                a['nome'] = name(i)
+                                args.append(a)
+                                a = {}
+    for item in content:
+        if 'info' in item:
+            if 'lexema' in item['info']:
+                for a in args:
+                    if a['nome'] == item['info']['lexema']:
+                        ags['func'] = a['func']
+                        ags['nome'] = a['nome']
+                        ags['tipo'] = item['tipo']
+
+                        argsComp.append(ags)
+                        ags = {}
+            else:
+                for e in range(len(item['info'])):
+                    if 'lexema' in item['info'][e]:
+                        for a in args:
+                            if a['nome'] == item['info'][e]['lexema']:
+                                ags['func'] = a['func']
+                                ags['nome'] = a['nome']
+                                ags['tipo'] = item['tipo']
+
+                                argsComp.append(ags)
+                                ags = {}            
+
+    for e in params:
+        for i in argsComp:
+            if e['func'] == i['func'] and e['tipo'] != i['tipo']:
+                showErrors(getLine(e['func']), e['func'], 7)
+
 
 def verifyCallFunc(tree):
     content = walkTable()
@@ -199,10 +241,10 @@ def verifyCallVar(tree):
             return
                     
 ## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10, 11
+# 19, 9, 3, 4, 13, 2(+-)!, 5, 6, 10, 11, 14
 
 ## ERROS PARA TRATAR ANDANDO NA TABELA COMPLETA
-# 7!, 12!, 14, 15, 16, 17
+# 7!, 12!
+# Salvar if else na tabela de simbolo, laco de repeticao na tabela
 
-## ! = Mais complicados
 ## Em quase todos tem o problema da linha

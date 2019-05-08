@@ -16,9 +16,10 @@ def cutRepeatedElements(tree):
         if node.parent != None:
             father = name(node.parent)
 
-            # Elimina um pai e leva seus filhos para outro pai
+            # Elimina um pai e leva seus filhos para o vô
             if name(node) == father:
                 node.parent = no.parent
+                
                 if len(no.children) > 0:
                     i = 0
                     while i < len(no.children):
