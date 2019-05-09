@@ -5,9 +5,13 @@ def verifyReturn():
 
     for item in content:
         if 'categoria' in item and item['categoria'] == 'funcao':
+            if 'retorno' not in item:
+                showErrors(0, 'err', item['lexema'], 2)
+                exit(0)
             if (item['tipo'] == 'flutuante' or item['tipo'] == 'inteiro') and item['retorno'][0]['tipo'] != 'numero':
                 linha = getLine(item['retorno'][0]['elemento'])
                 showErrors(linha, 'err', item['retorno'][0]['elemento'], 2)
+                exit(0)
                 # Vou ter que arrumar essa funcao, pois tenho que verificar qual o tipo do retorno quando ele for 'var'
                 # Vou ter que fazer mais um for para procurar o tipo da variável que está sendo retornada
 

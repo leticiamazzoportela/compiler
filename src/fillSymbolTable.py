@@ -1,10 +1,12 @@
 from anytree import Node, PostOrderIter, PreOrderIter
 from utils import name, getLine, showErrors, insertTable, walkTable
 import json
+from sys import exit
 
 def findFunc(tree):
     st = {}
     funcoes = []
+    retorno = False
 
     for node in PreOrderIter(tree):
         st['categoria'] = 'funcao'
@@ -39,14 +41,6 @@ def findFunc(tree):
                             return
 
                 elif name(n) == 'corpo' and len(st['lexema']) >= 2:
-                    if 'retorno' not in str(n.children):
-                        showErrors(getLine(st['lexema']), 'err', st['lexema'], 2)
-                        return
-
-                    if len(n.children) <= 1:
-                        showErrors(getLine(name(n)), 'warn', st['lexema'], 1)
-
-
                     for e in PreOrderIter(n):
                         if name(e) == 'chamada_funcao':
                             if e.children[0].is_leaf:
@@ -59,8 +53,9 @@ def findFunc(tree):
                                 else:
                                     showErrors(linha, 'err', 'principal', 4)
                                 return
-
+                            
                         if name(e) == 'retorna':
+                            retorno = True
                             st['retorno'] = []
                             retorno = {}
                             for child in PreOrderIter(e):
@@ -70,11 +65,9 @@ def findFunc(tree):
 
                                     st['retorno'].append(retorno)
                                 retorno = {}
-            
-            
             funcoes.append(st)
             st = {}
-    
+
     return funcoes 
 
 def findVar(tree):
@@ -252,7 +245,7 @@ def verifyCallVar(tree):
 # 19, 9, 3, 4, 13, 5, 6, 10, 11, 14, 7
 
 ## AVISOS
-### 18, 8, 1
+### 1, 8
 
 ## FALTA
 ### ERROS: 12, arrumar 2 (por exemplo, se declaro uma funcao vazia, sem retornar nada, buga tudo)

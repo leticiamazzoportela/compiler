@@ -12,48 +12,10 @@
         ]
     },
     {
-        "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "fatorial",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "n"
-            }
-        ],
-        "retorno": [
-            {
-                "tipo": "numero",
-                "elemento": "0"
-            }
-        ]
-    },
-    {
-        "categoria": "funcao",
-        "tipo": "inteiro",
-        "lexema": "feliz",
-        "parametros": []
-    },
-    {
-        "tipo": "inteiro",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "n",
-                "categoria": "vetor",
-                "dimensao": "10"
-            },
-            {
-                "lexema": "fat",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
+        "escopo": "local",
         "info": {
-            "lexema": "x",
+            "lexema": "a",
             "categoria": "variavel"
         }
     }

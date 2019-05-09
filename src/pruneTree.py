@@ -1,6 +1,7 @@
 from anytree import Node, RenderTree, AsciiStyle, PreOrderIter, PostOrderIter
 from anytree.exporter import DotExporter
 from utils import name
+import re
 
 def cutUselessElements(tree):
     for node in PostOrderIter(tree):
@@ -11,21 +12,24 @@ def cutUselessElements(tree):
 
 def cutRepeatedElements(tree):
     for node in PostOrderIter(tree):
-        no = node.parent
+        no = node.parent # pai no atual
 
         if node.parent != None:
-            father = name(node.parent)
+            father = name(node.parent) # nome pai no atual
 
             # Elimina um pai e leva seus filhos para o vô
-            if name(node) == father:
-                node.parent = no.parent
-                
-                if len(no.children) > 0:
+            if name(node) == father: # no autal == pai
+                node.parent = no.parent # meu novo pai e meu vo
+
+                if len(no.children) > 0: # tamanho peu pai antigo
                     i = 0
-                    while i < len(no.children):
-                        no.children[i].parent = node
+                    print(len(no.children), name(no))
+                    while i < len(no.children): # varios filhos meu pai antigo
+                        print(str(no.children))
+                        no.children[i].parent = node ## os filhos do meu pai antigo vem para mim
                         i += 1
-                no.parent = None
+
+                no.parent = None ## pai antigo retirado
 
 def cutExpressionElements(tree):
     for node in PreOrderIter(tree):
@@ -51,7 +55,7 @@ def cutExpressionElements(tree):
 def prune(tree):
     cutUselessElements(tree)
     cutRepeatedElements(tree)
-    cutExpressionElements(tree)
+    # cutExpressionElements(tree)
 
     showPruneTree(tree)
     
