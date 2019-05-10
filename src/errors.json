@@ -1,7 +1,7 @@
 [
     {
         "code": 1,
-        "message": ""
+        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
     },
     {
         "code": 2,
@@ -57,7 +57,7 @@
     },
     {
         "code": 18,
-        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
+        "message": ""
     },
     {
         "code": 19,

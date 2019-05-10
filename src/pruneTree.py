@@ -20,14 +20,14 @@ def cutRepeatedElements(tree):
             # Elimina um pai e leva seus filhos para o vô
             if name(node) == father: # no autal == pai
                 node.parent = no.parent # meu novo pai e meu vo
-
-                if len(no.children) > 0: # tamanho peu pai antigo
-                    i = 0
-                    print(len(no.children), name(no))
-                    while i < len(no.children): # varios filhos meu pai antigo
-                        print(str(no.children))
-                        no.children[i].parent = node ## os filhos do meu pai antigo vem para mim
-                        i += 1
+                if len(no.children) > 0:
+                    for item in no.children:
+                        item.parent = node
+                # if len(no.children) > 0: # tamanho peu pai antigo
+                #     i = 0
+                #     while i < len(no.children): # varios filhos meu pai antigo
+                #         no.children[i].parent = node ## os filhos do meu pai antigo vem para mim
+                #         i += 1
 
                 no.parent = None ## pai antigo retirado
 
@@ -35,22 +35,22 @@ def cutExpressionElements(tree):
     for node in PreOrderIter(tree):
         if name(node) == 'expressao' and len(node.children) > 0 and name(node.children[0]) == 'expressao_logica':
             for n in PreOrderIter(node):
-                if name(n) == 'fator' and 'chamada_funcao' not in str(n.children):
+                if name(n) == 'expressao_aditiva':
                     n.parent = node
                     node.children[0].parent = None
-                
-                if name(n) == 'chamada_funcao':
-                    father = n.parent
-                    father.parent = node
-                    node.children[0].parent = None
+                        
+        #         if name(n) == 'chamada_funcao':
+        #             father = n.parent
+        #             father.parent = node
+        #             node.children[0].parent = None
         
-        if name(node) == 'lista_argumentos' and name(node.parent) == 'chamada_funcao':
-            for n in PreOrderIter(node):
-                if name(n) == 'expressao' and len(n.children) > 0 and name(n.children[0]) == 'expressao_logica':
-                    for k in PreOrderIter(n):
-                        if name(k) == 'fator':
-                            k.parent = n
-                            n.children[0].parent = None
+        # if name(node) == 'lista_argumentos' and name(node.parent) == 'chamada_funcao':
+        #     for n in PreOrderIter(node):
+        #         if name(n) == 'expressao' and len(n.children) > 0 and name(n.children[0]) == 'expressao_logica':
+        #             for k in PreOrderIter(n):
+        #                 if name(k) == 'fator':
+        #                     k.parent = n
+        #                     n.children[0].parent = None
 
 def prune(tree):
     cutUselessElements(tree)

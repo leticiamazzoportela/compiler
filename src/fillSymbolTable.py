@@ -35,10 +35,11 @@ def findFunc(tree):
                         linha = getLine('principal')
                         if len(st['parametros']) >= 1:
                             showErrors(linha, 'err', st['parametros'][0]['tipo'], 19)
+                            exit(0)
     
                         if st['tipo'] != 'inteiro':
                             showErrors(linha, 'err', st['tipo'], 9)
-                            return
+                            exit(0)
 
                 elif name(n) == 'corpo' and len(st['lexema']) >= 2:
                     for e in PreOrderIter(n):
@@ -52,7 +53,7 @@ def findFunc(tree):
                                     showErrors(linha, 'err', 'principal', 3)
                                 else:
                                     showErrors(linha, 'err', 'principal', 4)
-                                return
+                                exit(0)
                             
                         if name(e) == 'retorna':
                             retorno = True
@@ -101,7 +102,7 @@ def findVar(tree):
                                         
                                         if name(i) != 'numero':
                                             showErrors(linha, 'err', name(i.children[0]), 13)
-                                            return
+                                            exit(0)
 
                                         dados['categoria'] = 'vetor'
                                         dados['dimensao'] = name(i.children[0])

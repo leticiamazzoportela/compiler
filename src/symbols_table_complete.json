@@ -2,6 +2,23 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
+        "lexema": "fatorial",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "n"
+            }
+        ],
+        "retorno": [
+            {
+                "tipo": "numero",
+                "elemento": "0"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
         "lexema": "principal",
         "parametros": [],
         "retorno": [
@@ -13,9 +30,24 @@
     },
     {
         "tipo": "inteiro",
-        "escopo": "local",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "n",
+                "categoria": "vetor",
+                "dimensao": "5"
+            },
+            {
+                "lexema": "fat",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "global",
         "info": {
-            "lexema": "a",
+            "lexema": "x",
             "categoria": "variavel"
         }
     }
