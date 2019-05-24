@@ -158,7 +158,7 @@ def verifyParameters(tree):
             for e in PreOrderIter(tree):
                 if name(e) == 'lista_argumentos' and name(e.siblings[0]) == nameFunc:
                     if len(e.children) != size:
-                        linha = getLine(nameFunc) # problema da linha
+                        linha = getLine(nameFunc)
                         showErrors(linha, 'err', nameFunc, 6)
                     else:
                         for i in PreOrderIter(e):
@@ -194,6 +194,7 @@ def verifyParameters(tree):
         for i in argsComp:
             if e['func'] == i['func'] and e['tipo'] != i['tipo']:
                 showErrors(getLine(e['func']), 'err', e['func'], 7)
+                exit(0)
 
 
 def verifyCallFunc(tree):
@@ -213,6 +214,7 @@ def verifyCallFunc(tree):
         if func not in funcsTable:
             linha = getLine(func)
             showErrors(linha, 'err', func, 10)
+            exit(0)
 
 def verifyCallVar(tree):
     content = walkTable()
@@ -240,7 +242,7 @@ def verifyCallVar(tree):
         if element not in varTable and element not in params:
             linha = getLine(element)
             showErrors(linha, 'err', element, 14)
-            return
+            exit(0)
                     
 ## ERROS TRATADOS:
 # 19, 9, 3, 4, 13, 5, 6, 10, 11, 14, 7
@@ -253,4 +255,3 @@ def verifyCallVar(tree):
 ### Salvar if else na tabela de simbolo, laco de repeticao na tabela
 
 ## Em quase todos tem o problema da linha
-### Ideia: Salvar a linha no nome do nó, aí hora que eu quiser a linha, é só fazer split

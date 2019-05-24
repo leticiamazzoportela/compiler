@@ -1,4 +1,5 @@
 import json
+from termcolor import colored
 
 def name(node):
     node_name = node.name.split('.')[1]
@@ -25,14 +26,19 @@ def showErrors(line, tipo, element, code):
     with open('errors.json', 'r') as f:
         errors = json.loads(f.read())
     
+    color = ''
     if tipo == 'err':
-        print('****ERRO SEMÂNTICO***\n')
+        color = 'red'
+        print(colored('****ERRO SEMÂNTICO***\n', color))
+
     else:
-        print('****AVISO***\n')
+        color = 'yellow'
+        print(colored('****AVISO***\n', color))
+
     for error in errors:
         if error['code'] == code:
-            print('Linha: '+str(line)+'\nElemento: '+'"'+str(element)+'"'+'\nDescrição: '+str(error['message']))
-            print('\n************\n')
+            print(colored('Linha: '+str(line)+'\nElemento: '+'"'+str(element)+'"'+'\nDescrição: '+str(error['message']), color))
+            print(colored('\n************\n', color))
 
 def insertTable(content):
     with open('symbols_table_complete.json', 'w') as f:

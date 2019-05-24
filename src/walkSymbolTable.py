@@ -28,7 +28,7 @@ def verifyFuncStatement():
             if funcs[i] == funcs[j]:
                 linha = getLine(funcs[i])
                 showErrors(linha, 'err', funcs[i], 5)
-                return
+                exit(0)
 
 def verifyVarStatement():
     content = walkTable()
@@ -54,5 +54,5 @@ def verifyVarStatement():
             if (var[i] == var[j] or (elementi == elementj and escopo != escopoSec)):
                 linha = getLine(elementi)
                 showErrors(linha, 'err', elementi, 11)
-                return
+                exit(0)
             
