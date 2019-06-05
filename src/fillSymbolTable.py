@@ -236,22 +236,24 @@ def verifyCallVar(tree):
     for e in PreOrderIter(tree):
         if name(e) == 'var' and name(e.parent) == 'atribuicao':
             varTree.append(name(e.children[0]))
-    
+
     for i in range(0, len(varTree)):
         element = varTree[i]
         if element not in varTable and element not in params:
             linha = getLine(element)
             showErrors(linha, 'err', element, 14)
             exit(0)
-                    
-## ERROS TRATADOS:
-# 19, 9, 3, 4, 13, 5, 6, 10, 11, 14, 7
+    
+    for i in range(0, len(varTable)):
+        element = varTable[i]
+        if element not in varTree:
+            linha = getLine(element)
+            showErrors(linha, 'warn', element, 1)
+    
 
 ## AVISOS
-### 1, 8
+### 8
 
 ## FALTA
 ### ERROS: 12, arrumar 2 (por exemplo, se declaro uma funcao vazia, sem retornar nada, buga tudo)
 ### Salvar if else na tabela de simbolo, laco de repeticao na tabela
-
-## Em quase todos tem o problema da linha

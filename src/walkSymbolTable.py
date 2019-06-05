@@ -23,12 +23,18 @@ def verifyFuncStatement():
         if 'categoria' in item and item['categoria'] == 'funcao':
             funcs.append(item['lexema'])
     
+    if 'principal' not in funcs:
+        showErrors('-', 'err', 'programa', 18)
+        exit(0)
+    
     for i in range(0, len(funcs)):
         for j in range(0, i):
             if funcs[i] == funcs[j]:
                 linha = getLine(funcs[i])
                 showErrors(linha, 'err', funcs[i], 5)
                 exit(0)
+    
+
 
 def verifyVarStatement():
     content = walkTable()

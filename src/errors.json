@@ -1,7 +1,7 @@
 [
     {
         "code": 1,
-        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
+        "message": "A variável foi declarada, mas não foi utilizada"
     },
     {
         "code": 2,
@@ -57,7 +57,7 @@
     },
     {
         "code": 18,
-        "message": ""
+        "message": "O programa deve ter uma função principal"
     },
     {
         "code": 19,
