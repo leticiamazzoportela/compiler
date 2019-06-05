@@ -25,7 +25,7 @@ def p_programa(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'programa')
+    p[0] = Node(str(id_node)+'#'+'programa')
     p[1].parent = p[0]
 
     # node.lineno
@@ -35,7 +35,7 @@ def p_lista_declaracoes(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'lista_declaracoes')
+    p[0] = Node(str(id_node)+'#'+'lista_declaracoes')
     p[1].parent = p[0]
 
     if len(p) == 3:
@@ -48,7 +48,7 @@ def p_declaracao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'declaracao')
+    p[0] = Node(str(id_node)+'#'+'declaracao')
     p[1].parent = p[0]
 
 def p_declaracao_variaveis(p):
@@ -56,11 +56,11 @@ def p_declaracao_variaveis(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'declaracao_variaveis')
+    p[0] = Node(str(id_node)+'#'+'declaracao_variaveis')
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
 def p_inicializacao_variaveis(p):
@@ -68,7 +68,7 @@ def p_inicializacao_variaveis(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'inicializacao_variaveis')
+    p[0] = Node(str(id_node)+'#'+'inicializacao_variaveis')
     p[1].parent = p[0]
 
 def p_lista_variaveis(p):
@@ -77,12 +77,12 @@ def p_lista_variaveis(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'lista_variaveis')
+    p[0] = Node(str(id_node)+'#'+'lista_variaveis')
     p[1].parent = p[0]
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+        Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_var(p):
@@ -91,10 +91,10 @@ def p_var(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'var')
+    p[0] = Node(str(id_node)+'#'+'var')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     if len(p) == 3:
         p[2].parent = p[0]
@@ -105,23 +105,23 @@ def p_indice(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'indice')
+    p[0] = Node(str(id_node)+'#'+'indice')
 
     if len(p) == 5:
         p[1].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+        Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
 
         p[3].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+        Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
     elif len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+        Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
         p[2].parent = p[0]
 
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
+        Node(str(id_node)+'#'+p[3], parent=p[0], lineno=p.lineno(3))
 
 def p_tipo(p):
     '''tipo : INTEIRO
@@ -129,10 +129,10 @@ def p_tipo(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'tipo')
+    p[0] = Node(str(id_node)+'#'+'tipo')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_declaracao_funcao(p):
     '''declaracao_funcao : tipo cabecalho
@@ -140,7 +140,7 @@ def p_declaracao_funcao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'declaracao_funcao')
+    p[0] = Node(str(id_node)+'#'+'declaracao_funcao')
     p[1].parent = p[0]
 
     if len(p) == 3:
@@ -151,21 +151,21 @@ def p_cabecalho(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'cabecalho')
+    p[0] = Node(str(id_node)+'#'+'cabecalho')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+    Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
     p[5].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[6], parent=p[0], lineno=p.lineno(6))
+    Node(str(id_node)+'#'+p[6], parent=p[0], lineno=p.lineno(6))
 
 def p_lista_parametros(p):
     '''lista_parametros : lista_parametros VIRGULA parametro
@@ -174,12 +174,12 @@ def p_lista_parametros(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'lista_parametros')
+    p[0] = Node(str(id_node)+'#'+'lista_parametros')
     p[1].parent = p[0]
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+        Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_parametro(p):
@@ -188,14 +188,14 @@ def p_parametro(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'parametro')
+    p[0] = Node(str(id_node)+'#'+'parametro')
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
+    Node(str(id_node)+'#'+p[3], parent=p[0], lineno=p.lineno(3))
 
 def p_corpo(p):
     '''corpo : corpo acao
@@ -203,7 +203,7 @@ def p_corpo(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'corpo')
+    p[0] = Node(str(id_node)+'#'+'corpo')
     p[1].parent = p[0]
 
     if len(p) == 3:
@@ -221,7 +221,7 @@ def p_acao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'acao')
+    p[0] = Node(str(id_node)+'#'+'acao')
     p[1].parent = p[0]
 
 def p_se(p):
@@ -230,37 +230,37 @@ def p_se(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'se')
+    p[0] = Node(str(id_node)+'#'+'se')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
     p[2].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
+    Node(str(id_node)+'#'+p[3], parent=p[0], lineno=p.lineno(3))
     p[4].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[5], parent=p[0], lineno=p.lineno(5))
+    Node(str(id_node)+'#'+p[5], parent=p[0], lineno=p.lineno(5))
 
     if len(p) == 8:   
         p[6].parent = p[0]
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[7], parent=p[0], lineno=p.lineno(7))
+        Node(str(id_node)+'#'+p[7], parent=p[0], lineno=p.lineno(7))
 
 def p_repita(p):
     '''repita : REPITA corpo ATE expressao'''
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'repita')
+    p[0] = Node(str(id_node)+'#'+'repita')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
     p[2].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
+    Node(str(id_node)+'#'+p[3], parent=p[0], lineno=p.lineno(3))
     p[4].parent = p[0]
 
 def p_atribuicao(p):
@@ -268,11 +268,11 @@ def p_atribuicao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'atribuicao')
+    p[0] = Node(str(id_node)+'#'+'atribuicao')
     p[1].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
 def p_leia(p):
@@ -280,51 +280,51 @@ def p_leia(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'leia')
+    p[0] = Node(str(id_node)+'#'+'leia')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+    Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_escreva(p):
     '''escreva : ESCREVA ABRE_PAR expressao FECHA_PAR'''
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'escreva')
+    p[0] = Node(str(id_node)+'#'+'escreva')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+    Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_retorna(p):
     '''retorna : RETORNA ABRE_PAR expressao FECHA_PAR'''
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'retorna')
+    p[0] = Node(str(id_node)+'#'+'retorna')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+    Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_expressao(p):
     '''expressao : expressao_logica
@@ -332,7 +332,7 @@ def p_expressao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao')
+    p[0] = Node(str(id_node)+'#'+'expressao')
     p[1].parent = p[0]
 
 def p_expressao_logica(p):
@@ -341,7 +341,7 @@ def p_expressao_logica(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao_logica')
+    p[0] = Node(str(id_node)+'#'+'expressao_logica')
     p[1].parent = p[0]
 
     if len(p) == 4:
@@ -354,7 +354,7 @@ def p_expressao_simples(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao_simples')
+    p[0] = Node(str(id_node)+'#'+'expressao_simples')
     p[1].parent = p[0]
 
     if len(p) == 4:
@@ -367,7 +367,7 @@ def p_expressao_aditiva(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao_aditiva')
+    p[0] = Node(str(id_node)+'#'+'expressao_aditiva')
     p[1].parent = p[0]
 
     if len(p) == 4:
@@ -380,7 +380,7 @@ def p_expressao_multiplicativa(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao_multiplicativa')
+    p[0] = Node(str(id_node)+'#'+'expressao_multiplicativa')
     p[1].parent = p[0]
 
     if len(p) == 4:
@@ -394,7 +394,7 @@ def p_expressao_unaria(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'expressao_unaria')
+    p[0] = Node(str(id_node)+'#'+'expressao_unaria')
     p[1].parent = p[0]
 
     if len(p) == 3:
@@ -410,10 +410,10 @@ def p_operador_relacional(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'operador_relacional')
+    p[0] = Node(str(id_node)+'#'+'operador_relacional')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_soma(p):
     '''operador_soma : SOMA
@@ -421,20 +421,20 @@ def p_operador_soma(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'operador_soma')
+    p[0] = Node(str(id_node)+'#'+'operador_soma')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_negacao(p):
     '''operador_negacao : NEGACAO'''
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'operador_negacao')
+    p[0] = Node(str(id_node)+'#'+'operador_negacao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_logico(p):
     '''operador_logico : E_LOGICO
@@ -442,10 +442,10 @@ def p_operador_logico(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'operador_logico')
+    p[0] = Node(str(id_node)+'#'+'operador_logico')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_operador_multiplicacao(p):
     '''operador_multiplicacao : MULTIPLICACAO
@@ -453,10 +453,10 @@ def p_operador_multiplicacao(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'operador_multiplicacao')
+    p[0] = Node(str(id_node)+'#'+'operador_multiplicacao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
 def p_fator(p):
     '''fator : ABRE_PAR expressao FECHA_PAR
@@ -466,15 +466,15 @@ def p_fator(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'fator')
+    p[0] = Node(str(id_node)+'#'+'fator')
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+        Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
         p[2].parent = p[0]
 
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[3], parent=p[0], lineno=p.lineno(3))
+        Node(str(id_node)+'#'+p[3], parent=p[0], lineno=p.lineno(3))
     elif len(p) == 2:
         p[1].parent = p[0]
 
@@ -484,27 +484,27 @@ def p_numero(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'numero')
+    p[0] = Node(str(id_node)+'#'+'numero')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+str(p[1]), parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+str(p[1]), parent=p[0], lineno=p.lineno(1))
 
 def p_chamada_funcao(p):
     '''chamada_funcao : ID ABRE_PAR lista_argumentos FECHA_PAR'''
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'chamada_funcao')
+    p[0] = Node(str(id_node)+'#'+'chamada_funcao')
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[1], parent=p[0], lineno=p.lineno(1))
+    Node(str(id_node)+'#'+p[1], parent=p[0], lineno=p.lineno(1))
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+    Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
     p[3].parent = p[0]
 
     id_node = id_node + 1
-    Node(str(id_node)+'.'+p[4], parent=p[0], lineno=p.lineno(4))
+    Node(str(id_node)+'#'+p[4], parent=p[0], lineno=p.lineno(4))
 
 def p_lista_argumentos(p):
     '''lista_argumentos : lista_argumentos VIRGULA expressao
@@ -513,12 +513,12 @@ def p_lista_argumentos(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+'lista_argumentos')
+    p[0] = Node(str(id_node)+'#'+'lista_argumentos')
     p[1].parent = p[0]
 
     if len(p) == 4:
         id_node = id_node + 1
-        Node(str(id_node)+'.'+p[2], parent=p[0], lineno=p.lineno(2))
+        Node(str(id_node)+'#'+p[2], parent=p[0], lineno=p.lineno(2))
         p[3].parent = p[0]
 
 def p_vazio(p):
@@ -526,7 +526,7 @@ def p_vazio(p):
     global id_node
 
     id_node = id_node + 1
-    p[0] = Node(str(id_node)+'.'+str(p[0]))
+    p[0] = Node(str(id_node)+'#'+str(p[0]))
 #************************************************
 # Fim das regras
 

@@ -2,7 +2,7 @@ import json
 from termcolor import colored
 
 def name(node):
-    node_name = node.name.split('.')[1]
+    node_name = node.name.split('#')[1]
     return node_name
 
 def walkTable():
