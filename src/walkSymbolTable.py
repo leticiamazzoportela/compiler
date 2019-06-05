@@ -2,16 +2,34 @@ from utils import walkTable, showErrors, getLine
 
 def verifyReturn():
     content = walkTable()
+    varTypes = []
+    paramTypes = []
+
+    for item in content:
+        if 'info' in item and item['info'][0]['categoria'] == 'variavel':
+            varTypes.append(item['info'][0]['lexema']+'-'+item['tipo'])
+        if 'categoria' in item and item['categoria'] == 'funcao':
+            if len(item['parametros']) > 0:
+                for e in item['parametros']:
+                    paramTypes.append(e['lexema']+'-'+e['tipo'])
 
     for item in content:
         if 'categoria' in item and item['categoria'] == 'funcao':
             if 'retorno' not in item:
                 showErrors(0, 'err', item['lexema'], 2)
                 exit(0)
-            if (item['tipo'] == 'flutuante' or item['tipo'] == 'inteiro') and item['retorno'][0]['tipo'] != 'numero':
+            
+            # continuar depois
+            # for e in range(len(varTypes)):
+            #     var = e.split('-')[0]
+            #     tipo = e.split('-')[1]
+
+            if (item['tipo'] == 'flutuante' or item['tipo'] == 'inteiro'):
                 linha = getLine(item['retorno'][0]['elemento'])
                 showErrors(linha, 'err', item['retorno'][0]['elemento'], 2)
                 exit(0)
+                
+                
                 # Vou ter que arrumar essa funcao, pois tenho que verificar qual o tipo do retorno quando ele for 'var'
                 # Vou ter que fazer mais um for para procurar o tipo da variável que está sendo retornada
 

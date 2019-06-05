@@ -159,6 +159,7 @@ def verifyParameters(tree):
                     if len(e.children) != size:
                         linha = getLine(nameFunc)
                         showErrors(linha, 'err', nameFunc, 6)
+                        exit(0)
                     else:
                         for i in PreOrderIter(e):
                             if i.is_leaf and name(i.parent) == 'var':
