@@ -223,26 +223,6 @@
             {
                 "posicao_inicio": 2,
                 "token": "ID",
-                "lexema": "c"
-            },
-            {
-                "posicao_inicio": 4,
-                "token": "ATRIBUICAO",
-                "lexema": ":="
-            },
-            {
-                "posicao_inicio": 7,
-                "token": "NUM_FLUTUANTE",
-                "lexema": 1.2
-            }
-        ]
-    },
-    {
-        "linha": 16,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "ID",
                 "lexema": "b"
             },
             {
@@ -258,11 +238,11 @@
         ]
     },
     {
-        "linha": 17,
+        "linha": 16,
         "conteudo": []
     },
     {
-        "linha": 18,
+        "linha": 17,
         "conteudo": [
             {
                 "posicao_inicio": 2,
@@ -307,32 +287,7 @@
         ]
     },
     {
-        "linha": 19,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "RETORNA",
-                "lexema": "retorna"
-            },
-            {
-                "posicao_inicio": 9,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 10,
-                "token": "NUM_INTEIRO",
-                "lexema": 0
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 20,
+        "linha": 18,
         "conteudo": [
             {
                 "posicao_inicio": 1,

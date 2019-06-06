@@ -39,12 +39,12 @@ def verifyReturn():
                         showErrors(getLine(param), 'err', param, 2)
                         exit(0)
             
-            for r in range(len(retorno)):
-                if '.' in retorno[r] and item['tipo'] == 'inteiro':
-                    showErrors(getLine('retorna'), 'err', retorno[r], 2)
+            for r in retorno:
+                if '.' in r and item['tipo'] == 'inteiro':
+                    showErrors(getLine('retorna'), 'err', r, 2)
                     exit(0)
-                elif '.' not in retorno[r] and item['tipo'] == 'flutuante':
-                    showErrors(getLine('retorna'), 'err', retorno[r], 2)
+                elif '.' not in r and item['tipo'] == 'flutuante':
+                    showErrors(getLine('retorna'), 'err', r, 2)
                     exit(0)
                     
 

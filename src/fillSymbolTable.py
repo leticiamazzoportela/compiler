@@ -14,7 +14,7 @@ def findFunc(tree):
 
         if node_name == 'declaracao_funcao':
             for n in PreOrderIter(node):
-                if name(n) == 'tipo':
+                if name(n) == 'tipo' and name(n.parent) == 'declaracao_funcao':
                     st['tipo'] = name(n.children[0])
                 elif name(n) == 'cabecalho':
                     st['lexema'] = name(n.children[0])

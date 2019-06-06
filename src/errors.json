@@ -1,7 +1,7 @@
 [
     {
         "code": 1,
-        "message": "A variável foi declarada, mas não foi utilizada"
+        "message": "A variável não foi inicializada"
     },
     {
         "code": 2,
@@ -66,5 +66,9 @@
     {
         "code": 20,
         "message": "Aviso: A variável está recebendo um valor diferente do seu tipo"
+    },
+    {
+        "code": 21,
+        "message": "Aviso: A variável foi declarada, mas não foi utilizada"
     }
 ]

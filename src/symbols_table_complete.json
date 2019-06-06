@@ -32,13 +32,7 @@
         "categoria": "funcao",
         "tipo": "inteiro",
         "lexema": "principal",
-        "parametros": [],
-        "retorno": [
-            {
-                "tipo": "numero",
-                "elemento": "0"
-            }
-        ]
+        "parametros": []
     },
     {
         "tipo": "flutuante",
