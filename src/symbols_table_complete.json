@@ -41,11 +41,31 @@
         ]
     },
     {
-        "tipo": "inteiro",
+        "tipo": "flutuante",
+        "escopo": "local",
+        "info": [
+            {
+                "lexema": "c",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
         "escopo": "local",
         "info": [
             {
                 "lexema": "a",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "inteiro",
+        "escopo": "local",
+        "info": [
+            {
+                "lexema": "b",
                 "categoria": "variavel"
             }
         ]

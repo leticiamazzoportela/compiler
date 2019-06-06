@@ -62,5 +62,9 @@
     {
         "code": 19,
         "message": "A função principal não deve possuir parâmetros"
+    },
+    {
+        "code": 20,
+        "message": "Aviso: A variável está recebendo um valor diferente do seu tipo"
     }
 ]
