@@ -22,22 +22,24 @@ def verifyReturn():
     for item in content:
         if 'categoria' in item and item['categoria'] == 'funcao':
             if 'retorno' not in item:
-                showErrors(0, 'err', item['lexema'], 2)
+                showErrors(getLine(item['lexema']), 'err', item['lexema'], 2)
                 exit(0)
           
             for e in range(len(varTypes)):
-                for i in range(len(paramTypes)):
-                    var = varTypes[e].split('-')[0]
-                    param = paramTypes[i].split('-')[0]
-                    tipo = varTypes[e].split('-')[1]
-                    tipoP = paramTypes[i].split('-')[1]
+                var = varTypes[e].split('-')[0]
+                tipo = varTypes[e].split('-')[1]
 
-                    if var in retorno and tipo != item['tipo']:
-                        showErrors(getLine(var), 'err', var, 2)
-                        exit(0)
-                    elif param in retorno and tipoP != item['tipo']:
-                        showErrors(getLine(param), 'err', param, 2)
-                        exit(0)
+                if var in retorno and tipo != item['tipo']:
+                    showErrors(getLine(item['lexema']), 'err', item['lexema'], 2)
+                    exit(0)
+
+            for i in range(len(paramTypes)):
+                param = paramTypes[i].split('-')[0]
+                tipoP = paramTypes[i].split('-')[1]
+                
+                if param in retorno and tipoP != item['tipo']:
+                    showErrors(getLine(item['lexema']), 'err', param, 2)
+                    exit(0)
             
             for r in retorno:
                 if '.' in r and item['tipo'] == 'inteiro':

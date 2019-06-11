@@ -9,11 +9,63 @@
     },
     {
         "linha": 3,
-        "conteudo": []
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 8,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "n"
+            }
+        ]
     },
     {
         "linha": 4,
-        "conteudo": []
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 12,
+                "token": "ID",
+                "lexema": "x"
+            },
+            {
+                "posicao_inicio": 13,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 15,
+                "token": "ID",
+                "lexema": "y"
+            },
+            {
+                "posicao_inicio": 16,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 18,
+                "token": "ID",
+                "lexema": "z"
+            }
+        ]
     },
     {
         "linha": 5,
@@ -30,50 +82,50 @@
             {
                 "posicao_inicio": 9,
                 "token": "ID",
-                "lexema": "func"
+                "lexema": "fatorial"
             },
             {
-                "posicao_inicio": 13,
+                "posicao_inicio": 17,
                 "token": "ABRE_PAR",
                 "lexema": "("
             },
             {
-                "posicao_inicio": 14,
+                "posicao_inicio": 18,
                 "token": "INTEIRO",
                 "lexema": "inteiro"
             },
             {
-                "posicao_inicio": 21,
+                "posicao_inicio": 25,
                 "token": "DOIS_PONTOS",
                 "lexema": ":"
             },
             {
-                "posicao_inicio": 23,
+                "posicao_inicio": 27,
                 "token": "ID",
-                "lexema": "x"
+                "lexema": "n"
             },
             {
-                "posicao_inicio": 24,
+                "posicao_inicio": 28,
                 "token": "VIRGULA",
                 "lexema": ","
             },
             {
-                "posicao_inicio": 26,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
+                "posicao_inicio": 30,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
             },
             {
-                "posicao_inicio": 33,
+                "posicao_inicio": 39,
                 "token": "DOIS_PONTOS",
                 "lexema": ":"
             },
             {
-                "posicao_inicio": 35,
+                "posicao_inicio": 41,
                 "token": "ID",
-                "lexema": "y"
+                "lexema": "m"
             },
             {
-                "posicao_inicio": 36,
+                "posicao_inicio": 42,
                 "token": "FECHA_PAR",
                 "lexema": ")"
             }
@@ -81,9 +133,71 @@
     },
     {
         "linha": 7,
+        "conteudo": []
+    },
+    {
+        "linha": 8,
+        "conteudo": []
+    },
+    {
+        "linha": 9,
         "conteudo": [
             {
                 "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "m"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "NUM_INTEIRO",
+                "lexema": 5
+            }
+        ]
+    },
+    {
+        "linha": 10,
+        "conteudo": []
+    },
+    {
+        "linha": 11,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "SE",
+                "lexema": "se"
+            },
+            {
+                "posicao_inicio": 5,
+                "token": "ID",
+                "lexema": "n"
+            },
+            {
+                "posicao_inicio": 6,
+                "token": "MAIOR",
+                "lexema": ">"
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "NUM_INTEIRO",
+                "lexema": 0
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "ENTAO",
+                "lexema": "ent\u00e3o"
+            }
+        ]
+    },
+    {
+        "linha": 12,
+        "conteudo": [
+            {
+                "posicao_inicio": 3,
                 "token": "RETORNA",
                 "lexema": "retorna"
             },
@@ -95,27 +209,179 @@
             {
                 "posicao_inicio": 11,
                 "token": "ID",
-                "lexema": "x"
+                "lexema": "n"
             },
             {
-                "posicao_inicio": 13,
-                "token": "SOMA",
-                "lexema": "+"
-            },
-            {
-                "posicao_inicio": 15,
-                "token": "ID",
-                "lexema": "y"
-            },
-            {
-                "posicao_inicio": 16,
+                "posicao_inicio": 12,
                 "token": "FECHA_PAR",
                 "lexema": ")"
             }
         ]
     },
     {
-        "linha": 8,
+        "linha": 13,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "SENAO",
+                "lexema": "sen\u00e3o"
+            }
+        ]
+    },
+    {
+        "linha": 14,
+        "conteudo": [
+            {
+                "posicao_inicio": 3,
+                "token": "REPITA",
+                "lexema": "repita"
+            }
+        ]
+    },
+    {
+        "linha": 15,
+        "conteudo": [
+            {
+                "posicao_inicio": 4,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
+            },
+            {
+                "posicao_inicio": 13,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 15,
+                "token": "ID",
+                "lexema": "p"
+            }
+        ]
+    },
+    {
+        "linha": 16,
+        "conteudo": [
+            {
+                "posicao_inicio": 3,
+                "token": "ATE",
+                "lexema": "at\u00e9"
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "ID",
+                "lexema": "n"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "IGUALDADE",
+                "lexema": "="
+            },
+            {
+                "posicao_inicio": 11,
+                "token": "NUM_INTEIRO",
+                "lexema": 0
+            }
+        ]
+    },
+    {
+        "linha": 17,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "FIM",
+                "lexema": "fim"
+            }
+        ]
+    },
+    {
+        "linha": 18,
+        "conteudo": []
+    },
+    {
+        "linha": 19,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "z"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.9
+            }
+        ]
+    },
+    {
+        "linha": 20,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "z"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "ID",
+                "lexema": "z"
+            },
+            {
+                "posicao_inicio": 8,
+                "token": "SOMA",
+                "lexema": "+"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            }
+        ]
+    },
+    {
+        "linha": 21,
+        "conteudo": []
+    },
+    {
+        "linha": 22,
+        "conteudo": []
+    },
+    {
+        "linha": 23,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "RETORNA",
+                "lexema": "retorna"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "m"
+            },
+            {
+                "posicao_inicio": 11,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 24,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -125,11 +391,11 @@
         ]
     },
     {
-        "linha": 9,
+        "linha": 25,
         "conteudo": []
     },
     {
-        "linha": 10,
+        "linha": 26,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -154,140 +420,82 @@
         ]
     },
     {
-        "linha": 11,
+        "linha": 27,
         "conteudo": [
             {
                 "posicao_inicio": 2,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
+                "token": "LEIA",
+                "lexema": "leia"
             },
             {
-                "posicao_inicio": 11,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "ID",
-                "lexema": "a"
-            }
-        ]
-    },
-    {
-        "linha": 12,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "ID",
-                "lexema": "c"
-            }
-        ]
-    },
-    {
-        "linha": 13,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 9,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "ID",
-                "lexema": "b"
-            }
-        ]
-    },
-    {
-        "linha": 14,
-        "conteudo": []
-    },
-    {
-        "linha": 15,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "ID",
-                "lexema": "b"
-            },
-            {
-                "posicao_inicio": 4,
-                "token": "ATRIBUICAO",
-                "lexema": ":="
-            },
-            {
-                "posicao_inicio": 7,
-                "token": "ID",
-                "lexema": "c"
-            }
-        ]
-    },
-    {
-        "linha": 16,
-        "conteudo": []
-    },
-    {
-        "linha": 17,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "ID",
-                "lexema": "a"
-            },
-            {
-                "posicao_inicio": 4,
-                "token": "ATRIBUICAO",
-                "lexema": ":="
-            },
-            {
-                "posicao_inicio": 7,
-                "token": "ID",
-                "lexema": "func"
-            },
-            {
-                "posicao_inicio": 11,
+                "posicao_inicio": 6,
                 "token": "ABRE_PAR",
                 "lexema": "("
             },
             {
-                "posicao_inicio": 12,
-                "token": "NUM_INTEIRO",
-                "lexema": 10
+                "posicao_inicio": 7,
+                "token": "ID",
+                "lexema": "n"
             },
             {
-                "posicao_inicio": 14,
-                "token": "VIRGULA",
-                "lexema": ","
-            },
-            {
-                "posicao_inicio": 15,
-                "token": "NUM_INTEIRO",
-                "lexema": 5
-            },
-            {
-                "posicao_inicio": 16,
+                "posicao_inicio": 8,
                 "token": "FECHA_PAR",
                 "lexema": ")"
             }
         ]
     },
     {
-        "linha": 18,
+        "linha": 28,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ESCREVA",
+                "lexema": "escreva"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 18,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 19,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 20,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 22,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 25,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            },
+            {
+                "posicao_inicio": 26,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 29,
         "conteudo": [
             {
                 "posicao_inicio": 1,
@@ -295,5 +503,523 @@
                 "lexema": "fim"
             }
         ]
+    },
+    {
+        "linha": 30,
+        "conteudo": []
+    },
+    {
+        "linha": 31,
+        "conteudo": []
+    },
+    {
+        "linha": 32,
+        "conteudo": []
+    },
+    {
+        "linha": 33,
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 8,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "a"
+            }
+        ]
+    },
+    {
+        "linha": 34,
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 12,
+                "token": "ID",
+                "lexema": "b"
+            }
+        ]
+    },
+    {
+        "linha": 35,
+        "conteudo": []
+    },
+    {
+        "linha": 36,
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "ID",
+                "lexema": "fatorial2"
+            },
+            {
+                "posicao_inicio": 18,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 19,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 26,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 28,
+                "token": "ID",
+                "lexema": "fat"
+            },
+            {
+                "posicao_inicio": 31,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 33,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
+            },
+            {
+                "posicao_inicio": 42,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 44,
+                "token": "ID",
+                "lexema": "fat2"
+            },
+            {
+                "posicao_inicio": 48,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 50,
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 57,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 59,
+                "token": "ID",
+                "lexema": "fat3"
+            },
+            {
+                "posicao_inicio": 63,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 37,
+        "conteudo": []
+    },
+    {
+        "linha": 38,
+        "conteudo": []
+    },
+    {
+        "linha": 39,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "a"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            }
+        ]
+    },
+    {
+        "linha": 40,
+        "conteudo": []
+    },
+    {
+        "linha": 41,
+        "conteudo": []
+    },
+    {
+        "linha": 42,
+        "conteudo": []
+    },
+    {
+        "linha": 43,
+        "conteudo": []
+    },
+    {
+        "linha": 44,
+        "conteudo": []
+    },
+    {
+        "linha": 45,
+        "conteudo": []
+    },
+    {
+        "linha": 46,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ESCREVA",
+                "lexema": "escreva"
+            },
+            {
+                "posicao_inicio": 9,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 18,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 19,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 27,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 28,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 29,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 31,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 34,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            },
+            {
+                "posicao_inicio": 35,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 37,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 40,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            },
+            {
+                "posicao_inicio": 41,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 47,
+        "conteudo": []
+    },
+    {
+        "linha": 48,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "a"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 15,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 16,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 17,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 19,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 22,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 49,
+        "conteudo": []
+    },
+    {
+        "linha": 50,
+        "conteudo": []
+    },
+    {
+        "linha": 51,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "b"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
+            },
+            {
+                "posicao_inicio": 7,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 15,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 16,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 17,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 19,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 22,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 52,
+        "conteudo": []
+    },
+    {
+        "linha": 53,
+        "conteudo": []
+    },
+    {
+        "linha": 54,
+        "conteudo": [
+            {
+                "posicao_inicio": 2,
+                "token": "ID",
+                "lexema": "fatorial"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ABRE_PAR",
+                "lexema": "("
+            },
+            {
+                "posicao_inicio": 11,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 12,
+                "token": "VIRGULA",
+                "lexema": ","
+            },
+            {
+                "posicao_inicio": 14,
+                "token": "NUM_FLUTUANTE",
+                "lexema": 1.0
+            },
+            {
+                "posicao_inicio": 17,
+                "token": "FECHA_PAR",
+                "lexema": ")"
+            }
+        ]
+    },
+    {
+        "linha": 55,
+        "conteudo": [
+            {
+                "posicao_inicio": 1,
+                "token": "FIM",
+                "lexema": "fim"
+            }
+        ]
+    },
+    {
+        "linha": 56,
+        "conteudo": []
+    },
+    {
+        "linha": 57,
+        "conteudo": []
+    },
+    {
+        "linha": 58,
+        "conteudo": []
+    },
+    {
+        "linha": 59,
+        "conteudo": []
+    },
+    {
+        "linha": 60,
+        "conteudo": []
+    },
+    {
+        "linha": 61,
+        "conteudo": []
+    },
+    {
+        "linha": 62,
+        "conteudo": []
+    },
+    {
+        "linha": 63,
+        "conteudo": []
+    },
+    {
+        "linha": 64,
+        "conteudo": []
+    },
+    {
+        "linha": 65,
+        "conteudo": []
+    },
+    {
+        "linha": 66,
+        "conteudo": []
+    },
+    {
+        "linha": 67,
+        "conteudo": []
+    },
+    {
+        "linha": 68,
+        "conteudo": []
+    },
+    {
+        "linha": 69,
+        "conteudo": []
+    },
+    {
+        "linha": 70,
+        "conteudo": []
+    },
+    {
+        "linha": 71,
+        "conteudo": []
+    },
+    {
+        "linha": 72,
+        "conteudo": []
+    },
+    {
+        "linha": 73,
+        "conteudo": []
+    },
+    {
+        "linha": 74,
+        "conteudo": []
+    },
+    {
+        "linha": 75,
+        "conteudo": []
+    },
+    {
+        "linha": 76,
+        "conteudo": []
+    },
+    {
+        "linha": 77,
+        "conteudo": []
+    },
+    {
+        "linha": 78,
+        "conteudo": []
+    },
+    {
+        "linha": 79,
+        "conteudo": []
+    },
+    {
+        "linha": 80,
+        "conteudo": []
     }
 ]

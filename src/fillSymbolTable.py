@@ -18,6 +18,11 @@ def findFunc(tree):
                     st['tipo'] = name(n.children[0])
                 elif name(n) == 'cabecalho':
                     st['lexema'] = name(n.children[0])
+                    
+                    if 'tipo' not in str(n.siblings):
+                        linha = getLine(st['lexema'])
+                        showErrors(linha, 'err', st['lexema'], 22)
+                        exit(0)
 
                     if 'parametro' in str(n.children):
                         parametros = {}
@@ -156,7 +161,12 @@ def verifyParameters(tree):
     
             for e in PreOrderIter(tree):
                 if name(e) == 'lista_argumentos' and name(e.siblings[0]) == nameFunc:
-                    if len(e.children) != size:
+                    newSize = -1
+                    if name(e.children[0]) == 'None':
+                        newSize = 0
+                    else:
+                        newSize = e.children
+                    if newSize != size:
                         linha = getLine(nameFunc)
                         showErrors(linha, 'err', nameFunc, 6)
                         exit(0)
@@ -215,6 +225,11 @@ def verifyCallFunc(tree):
             linha = getLine(func)
             showErrors(linha, 'err', func, 10)
             exit(0)
+    
+    for func in funcsTable:
+        if func not in funcsTree and func != 'principal':
+            linha = getLine(func)
+            showErrors(linha, 'warn', func, 8)
 
 def verifyCallVar(tree):
     content = walkTable()
@@ -231,19 +246,31 @@ def verifyCallVar(tree):
                     if 'lexema' in item['info'][e]:
                         varTable.append(item['info'][e]['lexema'])
         elif 'parametros' in item and len(item['parametros']) > 0:
-            params.append(item['parametros'][0]['lexema'])
+            for e in range(len(item['parametros'])):
+                params.append(item['parametros'][e]['lexema'])
     
     for e in PreOrderIter(tree):
-        if name(e) == 'var' and name(e.parent) == 'atribuicao':
+        if name(e) == 'var':
             varTree.append(name(e.children[0]))
 
+    noRepeat = []
+    
+    for e in varTree:
+        if varTree.count(e) == 1:
+            noRepeat.append(e)
+
+    for e in noRepeat:
+        if e not in params and e in varTable:
+            linha = getLine(e)
+            showErrors(linha, 'warn', e, 21)
+        
     for i in range(0, len(varTree)):
         element = varTree[i]
         if element not in varTable and element not in params:
             linha = getLine(element)
             showErrors(linha, 'err', element, 14)
             exit(0)
-    
+
     for i in range(0, len(varTable)):
         element = varTable[i]
         if element not in varTree:
