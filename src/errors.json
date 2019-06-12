@@ -65,7 +65,7 @@
     },
     {
         "code": 20,
-        "message": "Aviso: A variável está recebendo um valor diferente do seu tipo"
+        "message": "A variável está recebendo um valor diferente do seu tipo"
     },
     {
         "code": 21,

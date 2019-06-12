@@ -165,7 +165,7 @@ def verifyParameters(tree):
                     if name(e.children[0]) == 'None':
                         newSize = 0
                     else:
-                        newSize = e.children
+                        newSize = len(e.children)
                     if newSize != size:
                         linha = getLine(nameFunc)
                         showErrors(linha, 'err', nameFunc, 6)
@@ -234,24 +234,52 @@ def verifyCallFunc(tree):
 def verifyCallVar(tree):
     content = walkTable()
     varTable = []
+    varTableTypes = []
     varTree = []
     params = []
+    attrVar = []
+    attrParam = []
 
+    for e in PreOrderIter(tree):
+        if name(e) == 'var':
+            varTree.append(name(e.children[0]))
+        if name(e) == 'var' and name(e.parent) == 'atribuicao':
+            for i in PreOrderIter(e.siblings[0]):
+                if i.is_leaf and name(i.parent) != 'chamada_funcao':
+                    # verificar expressao
+                    attrVar.append(name(e.children[0])+'_'+name(i)+'_var')
+                elif i.is_leaf and name(i.parent) == 'chamada_funcao':
+                    attrVar.append(name(e.children[0])+'_'+name(i)+'_func')
+                    
     for item in content:
         if 'info' in item:
             if 'lexema' in item['info']:
                 varTable.append(item['info']['lexema'])
+                varTableTypes.append(item['info']['lexema']+'_'+item['tipo'])
             else:
                 for e in range(len(item['info'])):
                     if 'lexema' in item['info'][e]:
                         varTable.append(item['info'][e]['lexema'])
+                        varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo'])
         elif 'parametros' in item and len(item['parametros']) > 0:
             for e in range(len(item['parametros'])):
                 params.append(item['parametros'][e]['lexema'])
     
-    for e in PreOrderIter(tree):
-        if name(e) == 'var':
-            varTree.append(name(e.children[0]))
+    for e in varTableTypes:
+        nameVt = e.split('_')[0]
+        typeVt = e.split('_')[1]
+        for i in attrVar:
+            nameVar = i.split('_')[0]
+            receptVar = i.split('_')[1]
+            category = i.split('_')[2]
+            if category == 'var' and nameVt == nameVar:
+                for j in varTableTypes:
+                    if j.split('_')[0] == receptVar and j.split('_')[1] != typeVt and not receptVar.isdigit():
+                        showErrors(getLine(nameVt), 'err', nameVt, 20)
+                        exit(0)
+                    elif j.split('_')[1] != typeVt and receptVar.isdigit():
+                        showErrors(getLine(nameVt), 'err', nameVt, 20)
+                        exit(0)
 
     noRepeat = []
     

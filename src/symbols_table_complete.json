@@ -2,40 +2,12 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "fatorial2",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "fat3"
-            },
-            {
-                "tipo": "inteiro",
-                "lexema": "fat"
-            },
-            {
-                "tipo": "flutuante",
-                "lexema": "fat2"
-            }
-        ]
-    },
-    {
-        "categoria": "funcao",
-        "tipo": "inteiro",
-        "lexema": "fatorial",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "n"
-            },
-            {
-                "tipo": "flutuante",
-                "lexema": "m"
-            }
-        ],
+        "lexema": "func",
+        "parametros": [],
         "retorno": [
             {
                 "tipo": "var",
-                "elemento": "n"
+                "elemento": "a"
             }
         ]
     },
@@ -46,7 +18,7 @@
         "parametros": []
     },
     {
-        "tipo": "inteiro",
+        "tipo": "flutuante",
         "escopo": "global",
         "info": [
             {
@@ -56,41 +28,7 @@
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "local",
-        "info": [
-            {
-                "lexema": "p",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
         "tipo": "inteiro",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "n",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "x",
-                "categoria": "variavel"
-            },
-            {
-                "lexema": "y",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
         "escopo": "global",
         "info": [
             {
