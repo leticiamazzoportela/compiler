@@ -43,3 +43,10 @@ def showErrors(line, tipo, element, code):
 def insertTable(content):
     with open('symbols_table_complete.json', 'w') as f:
         json.dump(content, f, indent=4)
+
+def isFloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False

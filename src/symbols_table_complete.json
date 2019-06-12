@@ -6,8 +6,8 @@
         "parametros": [],
         "retorno": [
             {
-                "tipo": "var",
-                "elemento": "a"
+                "tipo": "numero",
+                "elemento": "0"
             }
         ]
     },
@@ -15,7 +15,13 @@
         "categoria": "funcao",
         "tipo": "inteiro",
         "lexema": "principal",
-        "parametros": []
+        "parametros": [],
+        "retorno": [
+            {
+                "tipo": "numero",
+                "elemento": "0"
+            }
+        ]
     },
     {
         "tipo": "flutuante",

@@ -1,5 +1,5 @@
 from anytree import Node, PostOrderIter, PreOrderIter
-from utils import name, getLine, showErrors, insertTable, walkTable
+from utils import name, getLine, showErrors, insertTable, walkTable, isFloat
 import json
 from sys import exit
 
@@ -250,7 +250,7 @@ def verifyCallVar(tree):
                     attrVar.append(name(e.children[0])+'_'+name(i)+'_var')
                 elif i.is_leaf and name(i.parent) == 'chamada_funcao':
                     attrVar.append(name(e.children[0])+'_'+name(i)+'_func')
-                    
+
     for item in content:
         if 'info' in item:
             if 'lexema' in item['info']:
@@ -274,12 +274,14 @@ def verifyCallVar(tree):
             category = i.split('_')[2]
             if category == 'var' and nameVt == nameVar:
                 for j in varTableTypes:
-                    if j.split('_')[0] == receptVar and j.split('_')[1] != typeVt and not receptVar.isdigit():
+                    if j.split('_')[0] == receptVar and j.split('_')[1] != typeVt:
                         showErrors(getLine(nameVt), 'err', nameVt, 20)
                         exit(0)
-                    elif j.split('_')[1] != typeVt and receptVar.isdigit():
-                        showErrors(getLine(nameVt), 'err', nameVt, 20)
-                        exit(0)
+                    # elif j.split('_')[1] != typeVt and receptVar.isdigit():
+                    #     showErrors(getLine(nameVt), 'err', nameVt, 20)
+                    #     exit(0)
+            # elif category == 'func':
+
 
     noRepeat = []
     
@@ -304,11 +306,3 @@ def verifyCallVar(tree):
         if element not in varTree:
             linha = getLine(element)
             showErrors(linha, 'warn', element, 1)
-    
-
-## AVISOS
-### 8
-
-## FALTA
-### ERROS: 12, arrumar 2 (por exemplo, se declaro uma funcao vazia, sem retornar nada, buga tudo)
-### Salvar if else na tabela de simbolo, laco de repeticao na tabela
