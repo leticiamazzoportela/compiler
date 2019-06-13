@@ -238,7 +238,7 @@ def verifyCallVar(tree):
     varTree = []
     params = []
     attrVar = []
-    attrParam = []
+    funcsTable = []
 
     for e in PreOrderIter(tree):
         if name(e) == 'var':
@@ -264,6 +264,9 @@ def verifyCallVar(tree):
         elif 'parametros' in item and len(item['parametros']) > 0:
             for e in range(len(item['parametros'])):
                 params.append(item['parametros'][e]['lexema'])
+        if 'categoria' in item and item['categoria'] == 'funcao':
+            funcsTable.append(item['lexema']+'_'+item['tipo'])
+    
     
     for e in varTableTypes:
         nameVt = e.split('_')[0]
@@ -280,7 +283,17 @@ def verifyCallVar(tree):
                     # elif j.split('_')[1] != typeVt and receptVar.isdigit():
                     #     showErrors(getLine(nameVt), 'err', nameVt, 20)
                     #     exit(0)
-            # elif category == 'func':
+    for e in funcsTable:
+        nameFunc = e.split('_')[0]
+        typeFunc = e.split('_')[1]
+        for i in attrVar:
+            nameVar = i.split('_')[0]
+            receptVar = i.split('_')[1]
+            category = i.split('_')[2]
+            for j in varTableTypes:
+                if category == 'func' and nameFunc == receptVar and typeFunc != j.split('_')[1] and nameVar == j.split('_')[0]:
+                    showErrors(getLine(nameVar), 'err', nameVar, 20)
+                    exit(0)
 
 
     noRepeat = []
