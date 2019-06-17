@@ -21,7 +21,7 @@ def verifyReturn():
 
     for item in content:
         if 'categoria' in item and item['categoria'] == 'funcao':
-            if 'retorno' not in item:
+            if 'retorno' not in item and item['tipo'] != 'vazio':
                 showErrors(getLine(item['lexema']), 'err', item['lexema'], 2)
                 exit(0)
           
@@ -68,8 +68,6 @@ def verifyFuncStatement():
                 linha = getLine(funcs[i])
                 showErrors(linha, 'err', funcs[i], 5)
                 exit(0)
-    
-
 
 def verifyVarStatement():
     content = walkTable()

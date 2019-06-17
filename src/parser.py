@@ -6,10 +6,9 @@ import json
 
 from scanner import tokens
 from scanner import find_column
-from semantic import walk_tree
 import pruneTree
-from fillSymbolTable import fillSymbolTable
-from walkSymbolTable import verifyReturn, verifyFuncStatement, verifyVarStatement
+from fillSymbolTable import semantic
+
 precedence = (
     ('left', 'SOMA', 'SUBTRACAO'),
     ('left', 'MULTIPLICACAO', 'DIVISAO'),
@@ -555,17 +554,17 @@ def run_parser(file):
         arq = f.read()
         result = parser.parse(arq)
         
-        # print("____________* Analisador Sintático Finalizado *____________\n")
-        # print("____________* Executando Analisador Semântico *____________\n")
         # walk_tree(result)
         # print("____________* Analisador Semântico Finalizado *____________\n")
+        # print("____________* Executando Analisador Semântico *____________\n")
         
         DotExporter(result).to_picture("ast.png")
-        
+        print("____________* Analisador Sintático Finalizado *____________\n")
+
+        print("____________* Executando Analisador Semântico *____________\n")
+    
         pt = pruneTree.prune(result) # Poda a árvore
-        fillSymbolTable(pt) #Preenche a tabela de símbolos
+        semantic(pt) #Executa analisador semântico
         
-        verifyReturn()
-        verifyFuncStatement()
-        verifyVarStatement()
+        print("____________* Analisador Semântico Finalizado *____________\n") 
         f.close()

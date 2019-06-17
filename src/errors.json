@@ -70,9 +70,5 @@
     {
         "code": 21,
         "message": "A variável foi declarada, mas não foi utilizada"
-    },
-    {
-        "code": 22,
-        "message": "O tipo da função deve ser inteiro ou flutuante"
     }
 ]

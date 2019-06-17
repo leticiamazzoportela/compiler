@@ -2,35 +2,6 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "func",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "x"
-            },
-            {
-                "tipo": "inteiro",
-                "lexema": "y"
-            }
-        ],
-        "retorno": [
-            {
-                "tipo": "var",
-                "elemento": "x"
-            },
-            {
-                "tipo": "operador_soma",
-                "elemento": "+"
-            },
-            {
-                "tipo": "var",
-                "elemento": "y"
-            }
-        ]
-    },
-    {
-        "categoria": "funcao",
-        "tipo": "inteiro",
         "lexema": "principal",
         "parametros": [],
         "retorno": [
@@ -41,18 +12,19 @@
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "local",
+        "tipo": "inteiro",
+        "escopo": "global",
         "info": [
             {
                 "lexema": "c",
-                "categoria": "variavel"
+                "categoria": "vetor",
+                "dimensao": "1"
             }
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "local",
+        "tipo": "inteiro",
+        "escopo": "global",
         "info": [
             {
                 "lexema": "a",
@@ -61,8 +33,8 @@
         ]
     },
     {
-        "tipo": "inteiro",
-        "escopo": "local",
+        "tipo": "flutuante",
+        "escopo": "global",
         "info": [
             {
                 "lexema": "b",

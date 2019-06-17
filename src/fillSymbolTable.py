@@ -1,5 +1,6 @@
 from anytree import Node, PostOrderIter, PreOrderIter
 from utils import name, getLine, showErrors, insertTable, walkTable, isFloat
+from walkSymbolTable import verifyVarStatement, verifyFuncStatement, verifyReturn
 import json
 from sys import exit
 
@@ -20,9 +21,7 @@ def findFunc(tree):
                     st['lexema'] = name(n.children[0])
                     
                     if 'tipo' not in str(n.siblings):
-                        linha = getLine(st['lexema'])
-                        showErrors(linha, 'err', st['lexema'], 22)
-                        exit(0)
+                        st['tipo'] = 'vazio'
 
                     if 'parametro' in str(n.children):
                         parametros = {}
@@ -128,15 +127,6 @@ def findVar(tree):
 
     return variaveis
 
-def fillSymbolTable(tree):
-    funcoes = findFunc(tree)
-    variaveis = findVar(tree)
-
-    insertTable(funcoes+variaveis)
-    verifyParameters(tree)
-    verifyCallFunc(tree)
-    verifyCallVar(tree)
-
 def verifyParameters(tree):
     content = walkTable()
     size = 0
@@ -239,17 +229,36 @@ def verifyCallVar(tree):
     params = []
     attrVar = []
     funcsTable = []
+    exp = []
+    temp = []
 
     for e in PreOrderIter(tree):
         if name(e) == 'var':
             varTree.append(name(e.children[0]))
+            if 'escreva' in str(e.ancestors) or 'leia' in str(e.ancestors):
+                temp.append(name(e.children[0]))
+        if name(e) == 'indice':
+            for i in PreOrderIter(e):
+                if i.is_leaf and name(i.parent) != 'numero' or '.' in name(i):
+                    showErrors(getLine(name(e.siblings[0])), 'err', name(e.siblings[0]), 13)
+                    exit(0)
         if name(e) == 'var' and name(e.parent) == 'atribuicao':
-            for i in PreOrderIter(e.siblings[0]):
-                if i.is_leaf and name(i.parent) != 'chamada_funcao':
-                    # verificar expressao
-                    attrVar.append(name(e.children[0])+'_'+name(i)+'_var')
-                elif i.is_leaf and name(i.parent) == 'chamada_funcao':
-                    attrVar.append(name(e.children[0])+'_'+name(i)+'_func')
+            if ('operador_soma' not in str(e.parent.descendants) and
+                'operador_multiplicacao' not in str(e.parent.descendants)):
+                for i in PreOrderIter(e.siblings[0]):
+                    if i.is_leaf and name(i.parent) != 'chamada_funcao':
+                        attrVar.append(name(e.children[0])+'_'+name(i)+'_var')
+                    elif i.is_leaf and name(i.parent) == 'chamada_funcao':
+                        attrVar.append(name(e.children[0])+'_'+name(i)+'_func')
+            else:
+                for i in PreOrderIter(e.siblings[0]):
+                    if name(i).startswith('operador_'):
+                        for j in PreOrderIter(i.siblings[0]):
+                            if j.is_leaf:
+                                exp.append(name(e.children[0])+'_'+name(j))
+                        for k in PreOrderIter(i.siblings[1]):
+                            if k.is_leaf:
+                                exp.append(name(e.children[0])+'_'+name(k))
 
     for item in content:
         if 'info' in item:
@@ -280,9 +289,15 @@ def verifyCallVar(tree):
                     if j.split('_')[0] == receptVar and j.split('_')[1] != typeVt:
                         showErrors(getLine(nameVt), 'err', nameVt, 20)
                         exit(0)
-                    # elif j.split('_')[1] != typeVt and receptVar.isdigit():
-                    #     showErrors(getLine(nameVt), 'err', nameVt, 20)
-                    #     exit(0)
+                    elif receptVar.isdigit():
+                        if typeVt != 'inteiro':
+                            showErrors(getLine(nameVar), 'err', nameVar, 20)
+                            exit(0)
+                    elif isFloat(receptVar):
+                        if typeVt != 'flutuante':
+                            showErrors(getLine(nameVar), 'err', nameVar, 20)
+                            exit(0)
+                    
     for e in funcsTable:
         nameFunc = e.split('_')[0]
         typeFunc = e.split('_')[1]
@@ -295,7 +310,25 @@ def verifyCallVar(tree):
                     showErrors(getLine(nameVar), 'err', nameVar, 20)
                     exit(0)
 
-
+    for e in varTableTypes:
+        nameVt = e.split('_')[0]
+        typeVt = e.split('_')[1]
+        for j in exp:
+            nameVar = j.split('_')[0]
+            receptVar = j.split('_')[1]
+            if nameVar == nameVt:
+                for k in varTableTypes:
+                    if k.split('_')[0] == receptVar and k.split('_')[1] != typeVt:
+                        showErrors(getLine(nameVar), 'err', nameVar, 20)
+                        exit(0)
+            elif receptVar.isdigit():
+                if typeVt != 'inteiro':
+                    showErrors(getLine(nameVar), 'err', nameVar, 20)
+                    exit(0)
+            elif isFloat(receptVar):
+                if typeVt != 'flutuante':
+                    showErrors(getLine(nameVar), 'err', nameVar, 20)
+                    exit(0)
     noRepeat = []
     
     for e in varTree:
@@ -316,6 +349,18 @@ def verifyCallVar(tree):
 
     for i in range(0, len(varTable)):
         element = varTable[i]
-        if element not in varTree:
+        if element not in varTree or element in temp and element not in attrVar:
             linha = getLine(element)
             showErrors(linha, 'warn', element, 1)
+
+def semantic(tree):
+    funcoes = findFunc(tree)
+    variaveis = findVar(tree)
+
+    insertTable(funcoes+variaveis)
+    verifyParameters(tree)
+    verifyFuncStatement()
+    verifyCallFunc(tree)
+    verifyVarStatement()
+    verifyCallVar(tree)
+    verifyReturn()

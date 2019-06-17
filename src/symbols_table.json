@@ -28,54 +28,14 @@
                 "lexema": "inteiro"
             },
             {
-                "posicao_inicio": 9,
-                "token": "ID",
-                "lexema": "func"
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 21,
+                "posicao_inicio": 8,
                 "token": "DOIS_PONTOS",
                 "lexema": ":"
             },
             {
-                "posicao_inicio": 23,
+                "posicao_inicio": 10,
                 "token": "ID",
-                "lexema": "x"
-            },
-            {
-                "posicao_inicio": 24,
-                "token": "VIRGULA",
-                "lexema": ","
-            },
-            {
-                "posicao_inicio": 26,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 33,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 35,
-                "token": "ID",
-                "lexema": "y"
-            },
-            {
-                "posicao_inicio": 36,
-                "token": "FECHA_PAR",
-                "lexema": ")"
+                "lexema": "a"
             }
         ]
     },
@@ -83,34 +43,19 @@
         "linha": 7,
         "conteudo": [
             {
-                "posicao_inicio": 2,
-                "token": "RETORNA",
-                "lexema": "retorna"
+                "posicao_inicio": 1,
+                "token": "FLUTUANTE",
+                "lexema": "flutuante"
             },
             {
                 "posicao_inicio": 10,
-                "token": "ABRE_PAR",
-                "lexema": "("
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
             },
             {
-                "posicao_inicio": 11,
+                "posicao_inicio": 12,
                 "token": "ID",
-                "lexema": "x"
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "SOMA",
-                "lexema": "+"
-            },
-            {
-                "posicao_inicio": 15,
-                "token": "ID",
-                "lexema": "y"
-            },
-            {
-                "posicao_inicio": 16,
-                "token": "FECHA_PAR",
-                "lexema": ")"
+                "lexema": "b"
             }
         ]
     },
@@ -119,8 +64,33 @@
         "conteudo": [
             {
                 "posicao_inicio": 1,
-                "token": "FIM",
-                "lexema": "fim"
+                "token": "INTEIRO",
+                "lexema": "inteiro"
+            },
+            {
+                "posicao_inicio": 8,
+                "token": "DOIS_PONTOS",
+                "lexema": ":"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ID",
+                "lexema": "c"
+            },
+            {
+                "posicao_inicio": 11,
+                "token": "ABRE_COL",
+                "lexema": "["
+            },
+            {
+                "posicao_inicio": 12,
+                "token": "NUM_INTEIRO",
+                "lexema": 1
+            },
+            {
+                "posicao_inicio": 13,
+                "token": "FECHA_COL",
+                "lexema": "]"
             }
         ]
     },
@@ -157,19 +127,34 @@
         "linha": 11,
         "conteudo": [
             {
-                "posicao_inicio": 2,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
+                "posicao_inicio": 3,
+                "token": "ID",
+                "lexema": "c"
+            },
+            {
+                "posicao_inicio": 4,
+                "token": "ABRE_COL",
+                "lexema": "["
+            },
+            {
+                "posicao_inicio": 5,
+                "token": "NUM_INTEIRO",
+                "lexema": 5
+            },
+            {
+                "posicao_inicio": 6,
+                "token": "FECHA_COL",
+                "lexema": "]"
+            },
+            {
+                "posicao_inicio": 8,
+                "token": "ATRIBUICAO",
+                "lexema": ":="
             },
             {
                 "posicao_inicio": 11,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 13,
-                "token": "ID",
-                "lexema": "a"
+                "token": "NUM_INTEIRO",
+                "lexema": 10
             }
         ]
     },
@@ -177,142 +162,29 @@
         "linha": 12,
         "conteudo": [
             {
-                "posicao_inicio": 2,
-                "token": "FLUTUANTE",
-                "lexema": "flutuante"
+                "posicao_inicio": 3,
+                "token": "RETORNA",
+                "lexema": "retorna"
+            },
+            {
+                "posicao_inicio": 10,
+                "token": "ABRE_PAR",
+                "lexema": "("
             },
             {
                 "posicao_inicio": 11,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
+                "token": "NUM_INTEIRO",
+                "lexema": 0
             },
             {
-                "posicao_inicio": 13,
-                "token": "ID",
-                "lexema": "c"
+                "posicao_inicio": 12,
+                "token": "FECHA_PAR",
+                "lexema": ")"
             }
         ]
     },
     {
         "linha": 13,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "INTEIRO",
-                "lexema": "inteiro"
-            },
-            {
-                "posicao_inicio": 9,
-                "token": "DOIS_PONTOS",
-                "lexema": ":"
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "ID",
-                "lexema": "b"
-            }
-        ]
-    },
-    {
-        "linha": 14,
-        "conteudo": []
-    },
-    {
-        "linha": 15,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "ID",
-                "lexema": "b"
-            },
-            {
-                "posicao_inicio": 4,
-                "token": "ATRIBUICAO",
-                "lexema": ":="
-            },
-            {
-                "posicao_inicio": 7,
-                "token": "NUM_INTEIRO",
-                "lexema": 8
-            }
-        ]
-    },
-    {
-        "linha": 16,
-        "conteudo": []
-    },
-    {
-        "linha": 17,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "ID",
-                "lexema": "a"
-            },
-            {
-                "posicao_inicio": 4,
-                "token": "ATRIBUICAO",
-                "lexema": ":="
-            },
-            {
-                "posicao_inicio": 7,
-                "token": "ID",
-                "lexema": "func"
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 12,
-                "token": "NUM_INTEIRO",
-                "lexema": 10
-            },
-            {
-                "posicao_inicio": 14,
-                "token": "VIRGULA",
-                "lexema": ","
-            },
-            {
-                "posicao_inicio": 15,
-                "token": "NUM_INTEIRO",
-                "lexema": 5
-            },
-            {
-                "posicao_inicio": 16,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 18,
-        "conteudo": [
-            {
-                "posicao_inicio": 2,
-                "token": "RETORNA",
-                "lexema": "retorna"
-            },
-            {
-                "posicao_inicio": 9,
-                "token": "ABRE_PAR",
-                "lexema": "("
-            },
-            {
-                "posicao_inicio": 10,
-                "token": "NUM_INTEIRO",
-                "lexema": 0
-            },
-            {
-                "posicao_inicio": 11,
-                "token": "FECHA_PAR",
-                "lexema": ")"
-            }
-        ]
-    },
-    {
-        "linha": 19,
         "conteudo": [
             {
                 "posicao_inicio": 1,
