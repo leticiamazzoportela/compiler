@@ -3,6 +3,24 @@
         "categoria": "funcao",
         "tipo": "inteiro",
         "lexema": "principal",
+        "parametros": []
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
+        "lexema": "func",
+        "parametros": [],
+        "retorno": [
+            {
+                "tipo": "var",
+                "elemento": "c"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
+        "lexema": "func",
         "parametros": [],
         "retorno": [
             {
@@ -12,18 +30,7 @@
         ]
     },
     {
-        "tipo": "inteiro",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "c",
-                "categoria": "vetor",
-                "dimensao": "1"
-            }
-        ]
-    },
-    {
-        "tipo": "inteiro",
+        "tipo": "flutuante",
         "escopo": "global",
         "info": [
             {
@@ -33,7 +40,7 @@
         ]
     },
     {
-        "tipo": "flutuante",
+        "tipo": "inteiro",
         "escopo": "global",
         "info": [
             {
