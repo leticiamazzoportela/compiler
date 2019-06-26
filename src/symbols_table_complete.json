@@ -2,35 +2,51 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
+        "lexema": "fatorial2",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "fat3"
+            },
+            {
+                "tipo": "inteiro",
+                "lexema": "fat"
+            },
+            {
+                "tipo": "flutuante",
+                "lexema": "fat2"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
+        "lexema": "fatorial",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "n"
+            },
+            {
+                "tipo": "flutuante",
+                "lexema": "m"
+            }
+        ],
+        "retorno": [
+            {
+                "tipo": "var",
+                "elemento": "n"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
         "lexema": "principal",
         "parametros": []
     },
     {
-        "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "func",
-        "parametros": [],
-        "retorno": [
-            {
-                "tipo": "var",
-                "elemento": "c"
-            }
-        ]
-    },
-    {
-        "categoria": "funcao",
-        "tipo": "inteiro",
-        "lexema": "func",
-        "parametros": [],
-        "retorno": [
-            {
-                "tipo": "numero",
-                "elemento": "0"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
         "escopo": "global",
         "info": [
             {
@@ -40,7 +56,41 @@
         ]
     },
     {
+        "tipo": "flutuante",
+        "escopo": "local",
+        "info": [
+            {
+                "lexema": "p",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
         "tipo": "inteiro",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "n",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "x",
+                "categoria": "variavel"
+            },
+            {
+                "lexema": "y",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
         "escopo": "global",
         "info": [
             {

@@ -50,3 +50,15 @@ def isFloat(value):
     return True
   except ValueError:
     return False
+
+def listVar(content):
+    varTableTypes = []
+    for item in content:
+        if 'info' in item:
+            if 'lexema' in item['info']:
+                varTableTypes.append(item['info']['lexema']+'_'+item['tipo'])
+            else:
+                for e in range(len(item['info'])):
+                    if 'lexema' in item['info'][e]:
+                        varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo'])
+    return varTableTypes
