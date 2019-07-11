@@ -56,9 +56,15 @@ def listVar(content):
     for item in content:
         if 'info' in item:
             if 'lexema' in item['info']:
-                varTableTypes.append(item['info']['lexema']+'_'+item['tipo'])
+                if item['categoria'] == 'variavel':
+                    varTableTypes.append(item['info']['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+'-1')
+                else:
+                    varTableTypes.append(item['info']['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+item['dimensao'])
             else:
                 for e in range(len(item['info'])):
                     if 'lexema' in item['info'][e]:
-                        varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo'])
+                        if item['categoria'] == 'variavel':
+                            varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+'-1')
+                        else:
+                            varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+item['dimensao'])
     return varTableTypes

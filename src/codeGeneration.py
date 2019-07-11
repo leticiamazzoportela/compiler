@@ -36,8 +36,6 @@ def varDeclaration(node): #tem que ver uma boa forma de chamar esse builder por 
             # tem que usar o builder.alloca(IntType...)
             print("alocar inteiros")
 
-
-
 def expression(node):
     print("Fazer métodos p/ expressoes")
 

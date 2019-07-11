@@ -2,99 +2,75 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "fatorial2",
-        "parametros": [
+        "lexema": "principal",
+        "parametros": [],
+        "retorno": [
             {
-                "tipo": "inteiro",
-                "lexema": "fat3"
-            },
-            {
-                "tipo": "inteiro",
-                "lexema": "fat"
-            },
-            {
-                "tipo": "flutuante",
-                "lexema": "fat2"
+                "tipo": "numero",
+                "elemento": "0"
             }
         ]
     },
     {
         "categoria": "funcao",
-        "tipo": "inteiro",
-        "lexema": "fatorial",
+        "lexema": "somaVetores",
+        "tipo": "vazio",
         "parametros": [
             {
                 "tipo": "inteiro",
                 "lexema": "n"
-            },
-            {
-                "tipo": "flutuante",
-                "lexema": "m"
-            }
-        ],
-        "retorno": [
-            {
-                "tipo": "var",
-                "elemento": "n"
             }
         ]
     },
     {
-        "categoria": "funcao",
         "tipo": "inteiro",
-        "lexema": "principal",
-        "parametros": []
-    },
-    {
-        "tipo": "inteiro",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "a",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
         "escopo": "local",
         "info": [
             {
-                "lexema": "p",
+                "lexema": "i",
                 "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "C",
+                "categoria": "vetor",
+                "dimensao": "1024"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "A",
+                "categoria": "vetor",
+                "dimensao": "1024"
+            }
+        ]
+    },
+    {
+        "tipo": "flutuante",
+        "escopo": "global",
+        "info": [
+            {
+                "lexema": "B",
+                "categoria": "vetor",
+                "dimensao": "1024"
             }
         ]
     },
     {
         "tipo": "inteiro",
-        "escopo": "global",
+        "escopo": "local",
         "info": [
             {
-                "lexema": "n",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "x",
-                "categoria": "variavel"
-            },
-            {
-                "lexema": "y",
-                "categoria": "variavel"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "b",
+                "lexema": "i",
                 "categoria": "variavel"
             }
         ]
