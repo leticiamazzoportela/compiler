@@ -1,6 +1,7 @@
 from anytree import Node, PostOrderIter, PreOrderIter
 from utils import name, getLine, showErrors, insertTable, walkTable, isFloat
 from walkSymbolTable import verifyVarStatement, verifyFuncStatement, verifyReturn
+import bkp
 import json
 from sys import exit
 
@@ -364,3 +365,7 @@ def semantic(tree):
     verifyVarStatement()
     verifyCallVar(tree)
     verifyReturn()
+
+    print("____________* Executando Geração de Código *____________\n")
+    
+    bkp.funcDeclaration(tree) 

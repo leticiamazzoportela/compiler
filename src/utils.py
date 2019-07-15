@@ -53,18 +53,36 @@ def isFloat(value):
 
 def listVar(content):
     varTableTypes = []
+    
     for item in content:
         if 'info' in item:
             if 'lexema' in item['info']:
-                if item['categoria'] == 'variavel':
-                    varTableTypes.append(item['info']['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+'-1')
+                if item['info']['categoria'] == 'variavel':
+                    varTableTypes.append(item['info']['lexema']+
+                    '_'+item['tipo']+
+                    '_'+item['info']['categoria']+
+                    '_'+'-1'+
+                    '_'+item['escopo'])
                 else:
-                    varTableTypes.append(item['info']['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+item['dimensao'])
+                    varTableTypes.append(item['info']['lexema']+
+                    '_'+item['tipo']+
+                    '_'+item['info']['categoria']+
+                    '_'+item['dimensao']+
+                    '_'+item['escopo'])
             else:
                 for e in range(len(item['info'])):
                     if 'lexema' in item['info'][e]:
-                        if item['categoria'] == 'variavel':
-                            varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+'-1')
+                        if item['info'][e]['categoria'] == 'variavel':
+                            varTableTypes.append(item['info'][e]['lexema']+
+                            '_'+item['tipo']+
+                            '_'+item['info'][e]['categoria']+
+                            '_'+'-1'+
+                            '_'+item['escopo'])
                         else:
-                            varTableTypes.append(item['info'][e]['lexema']+'_'+item['tipo']+'_'+item['categoria']+'_'+item['dimensao'])
+                            varTableTypes.append(item['info'][e]['lexema']+
+                            '_'+item['tipo']+
+                            '_'+item['info'][e]['categoria']+
+                            '_'+item['dimensao']+
+                            '_'+item['escopo'])
+
     return varTableTypes

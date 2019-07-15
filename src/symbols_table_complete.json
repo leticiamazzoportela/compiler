@@ -12,65 +12,21 @@
         ]
     },
     {
-        "categoria": "funcao",
-        "lexema": "somaVetores",
-        "tipo": "vazio",
-        "parametros": [
-            {
-                "tipo": "inteiro",
-                "lexema": "n"
-            }
-        ]
-    },
-    {
-        "tipo": "inteiro",
+        "tipo": "flutuante",
         "escopo": "local",
         "info": [
             {
-                "lexema": "i",
+                "lexema": "y",
                 "categoria": "variavel"
             }
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "C",
-                "categoria": "vetor",
-                "dimensao": "1024"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "A",
-                "categoria": "vetor",
-                "dimensao": "1024"
-            }
-        ]
-    },
-    {
-        "tipo": "flutuante",
-        "escopo": "global",
-        "info": [
-            {
-                "lexema": "B",
-                "categoria": "vetor",
-                "dimensao": "1024"
-            }
-        ]
-    },
-    {
         "tipo": "inteiro",
         "escopo": "local",
         "info": [
             {
-                "lexema": "i",
+                "lexema": "x",
                 "categoria": "variavel"
             }
         ]
