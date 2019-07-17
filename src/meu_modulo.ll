@@ -2,31 +2,20 @@
 target triple = "unknown-unknown-unknown"
 target datalayout = ""
 
+@"a" = common global i32 0, align 4
 define i32 @"main"() 
 {
-iniciomain:
+inicio_main:
   %"ret" = alloca i32
-  %"y" = alloca double, align 4
-  %"x" = alloca i32, align 4
-  %".2" = call i32 (...) @"scanf"([3 x i8]* @"leia2", i32 y)
-  %".3" = call i32 (...) @"printf"([4 x i8]* @"escreva3", i32 y)
-  %".4" = uitofp i32 0.0 to double
-  store double %".4", double* %"y"
-  store i32 0, i32* %"x"
-  %".7" = call i32 (...) @"printf"([4 x i8]* @"escreva4", i32 x)
-  %".8" = call i32 (...) @"scanf"([3 x i8]* @"leia5", i32 x)
+  %"b" = alloca i32, align 4
   store i32 0, i32* %"ret"
-  br label %"fimmain"
-fimmain:
-  %".11" = load i32, i32* %"ret"
-  ret i32 %".11"
+  store i32 10, i32* @"a"
+  %".4" = load i32, i32* @"a"
+  store i32 %".4", i32* %"b"
+  %".6" = load i32, i32* @"a"
+  store i32 %".6", i32* @"a"
+  br label %"fim_main"
+fim_main:
+  %".9" = load i32, i32* %"ret"
+  ret i32 %".9"
 }
-
-@"leia2" = constant [3 x i8] c"%d\00"
-declare i32 @"scanf"(...) 
-
-@"escreva3" = constant [4 x i8] c"%d\0a\00"
-declare i32 @"printf"(...) 
-
-@"escreva4" = constant [4 x i8] c"%d\0a\00"
-@"leia5" = constant [3 x i8] c"%d\00"

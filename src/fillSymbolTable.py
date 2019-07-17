@@ -1,7 +1,7 @@
 from anytree import Node, PostOrderIter, PreOrderIter
 from utils import name, getLine, showErrors, insertTable, walkTable, isFloat
 from walkSymbolTable import verifyVarStatement, verifyFuncStatement, verifyReturn
-import bkp
+import codeGeneration
 import json
 from sys import exit
 
@@ -366,6 +366,7 @@ def semantic(tree):
     verifyCallVar(tree)
     verifyReturn()
 
+    print("____________* Analisador Semântico Finalizado *____________\n")
     print("____________* Executando Geração de Código *____________\n")
     
-    bkp.funcDeclaration(tree) 
+    codeGeneration.funcDeclaration(tree) 

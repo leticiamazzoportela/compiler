@@ -12,11 +12,11 @@
         ]
     },
     {
-        "tipo": "flutuante",
-        "escopo": "local",
+        "tipo": "inteiro",
+        "escopo": "global",
         "info": [
             {
-                "lexema": "y",
+                "lexema": "a",
                 "categoria": "variavel"
             }
         ]
@@ -26,7 +26,7 @@
         "escopo": "local",
         "info": [
             {
-                "lexema": "x",
+                "lexema": "b",
                 "categoria": "variavel"
             }
         ]

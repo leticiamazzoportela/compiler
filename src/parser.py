@@ -554,10 +554,6 @@ def run_parser(file):
         arq = f.read()
         result = parser.parse(arq)
         
-        # walk_tree(result)
-        # print("____________* Analisador Semântico Finalizado *____________\n")
-        # print("____________* Executando Analisador Semântico *____________\n")
-        
         DotExporter(result).to_picture("ast.png")
         print("____________* Analisador Sintático Finalizado *____________\n")
 
@@ -565,6 +561,6 @@ def run_parser(file):
     
         pt = pruneTree.prune(result) # Poda a árvore
         semantic(pt) #Executa analisador semântico
-        
-        print("____________* Analisador Semântico Finalizado *____________\n") 
+
+        print("\n____________* Geração de Código Finalizada *____________\n") 
         f.close()
