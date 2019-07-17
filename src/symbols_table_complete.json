@@ -2,6 +2,35 @@
     {
         "categoria": "funcao",
         "tipo": "inteiro",
+        "lexema": "soma",
+        "parametros": [
+            {
+                "tipo": "inteiro",
+                "lexema": "a"
+            },
+            {
+                "tipo": "inteiro",
+                "lexema": "b"
+            }
+        ],
+        "retorno": [
+            {
+                "tipo": "var",
+                "elemento": "a"
+            },
+            {
+                "tipo": "operador_soma",
+                "elemento": "+"
+            },
+            {
+                "tipo": "var",
+                "elemento": "b"
+            }
+        ]
+    },
+    {
+        "categoria": "funcao",
+        "tipo": "inteiro",
         "lexema": "principal",
         "parametros": [],
         "retorno": [
@@ -13,7 +42,17 @@
     },
     {
         "tipo": "inteiro",
-        "escopo": "global",
+        "escopo": "local",
+        "info": [
+            {
+                "lexema": "b",
+                "categoria": "variavel"
+            }
+        ]
+    },
+    {
+        "tipo": "inteiro",
+        "escopo": "local",
         "info": [
             {
                 "lexema": "a",
@@ -26,7 +65,7 @@
         "escopo": "local",
         "info": [
             {
-                "lexema": "b",
+                "lexema": "c",
                 "categoria": "variavel"
             }
         ]

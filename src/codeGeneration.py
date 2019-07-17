@@ -121,9 +121,6 @@ def funcDeclaration(node):
             func = ir.Function(module, funcType, name=nameFunc)
             entryBlock = func.append_basic_block('inicio_' +nameFunc)
             builder = ir.IRBuilder(entryBlock)
-    
-            if retorno:
-                retFunc = builder.alloca(retorno, name='ret')
             
             for arg, name in zip(func.args, [i[0] for i in nomeParams]):
                 arg.name = name
@@ -137,6 +134,9 @@ def funcDeclaration(node):
                 locais[a.name] = f
                 builder.store(a, f)
             
+            if retorno:
+                retFunc = builder.alloca(retorno, name='ret')
+                
             endBlock = func.append_basic_block('fim_' +nameFunc)
 
             varDeclaration(node, builder)  
@@ -153,7 +153,7 @@ def funcDeclaration(node):
     
     arquivo.write(str(module))
     arquivo.close()
-    # compile_ir(str(module))
+    compile_ir(str(module))
     print(module)
 
 def callFunc(node, builder):
@@ -287,14 +287,12 @@ def expression(node, builder):
         if exp[1] == "=":
             return builder.icmp_signed("==", retInt(exp[0]), retInt(exp[2]), name="igual")  
     elif len(exp) == 1:
-        print('l', locais)
-        print('g', globais)
-        if not isnumber(exp[0]):
+        if not isnumber(exp[0]) and '.' not in exp[0]:
             if exp[0] in locais.keys():
                 elem1 = locais[exp[0]]
             if exp[0] in globais.keys():
                 elem1 = globais[exp[0]]
-            
+            print(exp)
             return builder.load(elem1)
         else:
             if isnumber(exp[0]):
@@ -302,14 +300,11 @@ def expression(node, builder):
             else:
                 return retFloat(float(exp[0]))
         
-
-
 def atribution(node, builder):
-    # nome = ''
     elem = None
-
     for n in PreOrderIter(node):
-        if n.is_leaf and ut.name(n.parent) == 'var':
+        pai = n.parent
+        if n.is_leaf and ut.name(pai) == 'var' and ut.name(pai.parent) == 'atribuicao':
             nome = ut.name(n)
     
             if nome in locais.keys():
@@ -317,9 +312,8 @@ def atribution(node, builder):
             if nome in globais.keys():
                 elem = globais[nome]
             
-            # builder.load(elem)
-            
             resultado = expression(node.children[1], builder)
+            
             if str(resultado.type) not in str(elem.type):
                 if str(elem.type) == "i32*":
                     resultado = builder.fptoui(resultado, ir.IntType(32))
